@@ -1,0 +1,20 @@
+# Check every Markdown document, including the hidden .github directory.
+hidden = true
+exclude_path = ['(^|/)(\.git|\.venv|node_modules)/']
+
+timeout = 30
+max_retries = 3
+retry_wait_time = 2
+max_concurrency = 4
+host_concurrency = 2
+host_request_interval = "500ms"
+
+# Follow redirects, but require a successful final response.
+accept = ["200..=299"]
+max_redirects = 10
+
+# Check heading anchors as well as destination pages and local files.
+include_fragments = "anchor-only"
+
+# Examples inside code blocks are not published links.
+include_verbatim = false

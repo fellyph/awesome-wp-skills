@@ -1,0 +1,66 @@
+name: Validate repository
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  markdown:
+    name: Markdown formatting
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24.2.0
+        with:
+          globs: |
+            **/*.md
+            .github/**/*.md
+
+  links:
+    name: Links and anchors
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --config lychee.toml --no-progress '**/*.md' '.github/**/*.md'
+          lycheeVersion: v0.24.2
+          fail: true
+          failIfEmpty: true
+          jobSummary: true
+          output: ${{ runner.temp }}/lychee-report.md
+
+  skills:
+    name: Agent Skill sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install validation dependencies
+        run: python -m pip install -r scripts/requirements.txt
+      - name: Test the validator
+        run: python -m unittest discover -s tests -v
+      - name: Verify skill sources and language parity
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/validate_skills.py

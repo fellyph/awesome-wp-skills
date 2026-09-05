@@ -1,0 +1,10 @@
+{
+  "config": {
+    "default": true,
+    // Catalog entries and tables stay on one line for readable diffs.
+    "MD013": false,
+    // Compact tables are intentional; column padding adds translation churn.
+    "MD060": false
+  },
+  "ignores": [".venv/**", "node_modules/**"]
+}
