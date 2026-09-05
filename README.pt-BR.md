@@ -82,6 +82,7 @@ As skills de qualidade web abaixo são mantidas por **Addy Osmani** como uma [co
 - [SEO](https://github.com/addyosmani/web-quality-skills/blob/main/skills/seo/SKILL.md) — Revisa as condições de rastreamento, os metadados, os títulos e os dados estruturados nas páginas que o site de fato renderiza.
 - [Best Practices](https://github.com/addyosmani/web-quality-skills/blob/main/skills/best-practices/SKILL.md) — Verifica a compatibilidade com navegadores, erros de execução, dependências e fundamentos de segurança web.
 - [wp-performance](https://github.com/WordPress/agent-skills/blob/trunk/skills/wp-performance/SKILL.md) — **WordPress.** Mede gargalos de backend em consultas, cache, tarefas agendadas e requisições remotas. Complementa as revisões de desempenho no navegador.
+- [a11y-debugging](https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/skills/a11y-debugging/SKILL.md) — **Chrome DevTools.** Audita e depura a acessibilidade usando a árvore de acessibilidade do DevTools, verificações do Lighthouse, rastreamento de foco e contraste de cores. Requer o Chrome DevTools MCP.
 
 ## Skills de testes e segurança
 

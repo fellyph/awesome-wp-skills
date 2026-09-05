@@ -70,7 +70,6 @@ Estas habilidades proceden de la colección [WordPress/agent-skills](https://git
 - [wpds](https://github.com/WordPress/agent-skills/blob/trunk/skills/wpds/SKILL.md) — **WordPress.** Crea interfaces con componentes, tokens y patrones de interacción del sistema de diseño de WordPress.
 - [Frontend Design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) — **Anthropic.** Crea composiciones y componentes con identidad propia que pueden servir de base para temas personalizados y secciones de páginas.
 - [Web Design Guidelines](https://github.com/vercel-labs/agent-skills/blob/main/skills/web-design-guidelines/SKILL.md) — **Vercel.** Revisa el código de interfaces para mejorar formularios accesibles, estados de foco, movimiento, localización y detalles de experiencia de usuario.
-- [React Best Practices](https://github.com/vercel-labs/agent-skills/blob/main/skills/react-best-practices/SKILL.md) — **Vercel.** Mejora el renderizado de React y la eficiencia de los paquetes de código en extensiones del editor o frontends headless. Adapta las recomendaciones específicas de Next.js al entorno de ejecución de WordPress.
 
 ## Habilidades de accesibilidad, rendimiento y calidad
 
@@ -83,6 +82,7 @@ Las siguientes habilidades de calidad web son mantenidas por **Addy Osmani** com
 - [SEO](https://github.com/addyosmani/web-quality-skills/blob/main/skills/seo/SKILL.md) — Revisa la capacidad de rastreo, los metadatos, los encabezados y los datos estructurados de las páginas que el sitio realmente renderiza.
 - [Best Practices](https://github.com/addyosmani/web-quality-skills/blob/main/skills/best-practices/SKILL.md) — Comprueba la compatibilidad entre navegadores, los errores de ejecución, las dependencias y los fundamentos de seguridad web.
 - [wp-performance](https://github.com/WordPress/agent-skills/blob/trunk/skills/wp-performance/SKILL.md) — **WordPress.** Mide los cuellos de botella del backend en consultas, caché, tareas programadas y peticiones remotas. Complementa las revisiones de rendimiento en el navegador.
+- [a11y-debugging](https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/skills/a11y-debugging/SKILL.md) — **Chrome DevTools.** Audita y depura la accesibilidad mediante el árbol de accesibilidad de DevTools, verificaciones de Lighthouse, seguimiento del foco y contraste de color. Requiere Chrome DevTools MCP.
 
 ## Habilidades de pruebas y seguridad
 

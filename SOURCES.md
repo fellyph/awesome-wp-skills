@@ -4,7 +4,7 @@ Initial documentation review: **2026-09-05**.
 
 ## Scope and method
 
-The first round covers 28 agent skills and 8 MCP integrations. Research was split across WordPress skills, general web skills, and MCP/site-builder integrations, then consolidated into the three READMEs.
+The first round covers 29 agent skills and 8 MCP integrations. Research was split across WordPress skills, general web skills, and MCP/site-builder integrations, then consolidated into the three READMEs.
 
 Entries were selected from maintainer-controlled repositories and product documentation. Individual skill instructions were inspected, along with installation notes and relevant migration notices. The WordPress use cases and suggested combinations are editorial assessments of documented capabilities.
 
@@ -19,6 +19,7 @@ The README entry links are the primary evidence for each description. These coll
 | [WordPress/agent-skills](https://github.com/WordPress/agent-skills) | All 16 listed WordPress skill files, including wpds and wp-performance. Current collection targets WordPress 7.0+ and PHP 7.4+; inspect individual requirements for older projects. |
 | [Impeccable](https://impeccable.style/) and [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Original repository, design skill/command distribution, and installation guidance. |
 | [Addy Osmani's web-quality-skills](https://github.com/addyosmani/web-quality-skills) | Six individual skill files; collection is unofficial and stack-agnostic. |
+| [Chrome DevTools skills](https://github.com/ChromeDevTools/chrome-devtools-mcp) | Accessibility debugging instructions (a11y-debugging) using the accessibility tree, Lighthouse, and Chrome DevTools MCP. |
 | [Anthropic skills](https://github.com/anthropics/skills) | Frontend design and Python Playwright web application testing instructions. |
 | [Vercel agent-skills](https://github.com/vercel-labs/agent-skills) | Web design and React skill files; React guidance also contains framework-specific material. |
 | [Cloudflare security-audit-skill](https://github.com/cloudflare/security-audit-skill) | Actual skill, independent validation workflow, subagent support, and Node.js requirements. |
