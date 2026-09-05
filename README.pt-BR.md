@@ -70,7 +70,6 @@ Estas skills fazem parte da coleção [WordPress/agent-skills](https://github.co
 - [wpds](https://github.com/WordPress/agent-skills/blob/trunk/skills/wpds/SKILL.md) — **WordPress.** Cria interfaces com componentes, tokens e padrões de interação do WordPress Design System.
 - [Frontend Design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) — **Anthropic.** Cria layouts e componentes com identidade própria que podem orientar temas personalizados e seções de páginas.
 - [Web Design Guidelines](https://github.com/vercel-labs/agent-skills/blob/main/skills/web-design-guidelines/SKILL.md) — **Vercel.** Revisa o código de interfaces quanto a formulários acessíveis, estados de foco, movimento, localização e detalhes de experiência do usuário.
-- [React Best Practices](https://github.com/vercel-labs/agent-skills/blob/main/skills/react-best-practices/SKILL.md) — **Vercel.** Melhora a renderização do React e a eficiência dos pacotes de código em extensões do editor ou frontends headless. Adapte as orientações específicas de Next.js ao ambiente de execução do WordPress.
 
 ## Skills de acessibilidade, desempenho e qualidade
 
