@@ -1,0 +1,37 @@
+name: Report a problem with an entry
+description: A broken link, an archived or migrated project, an inaccurate description, or a translation mismatch.
+title: "[Problem]: "
+labels: [problem]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Affected entry
+      description: The entry name as it appears in the README.
+      placeholder: wp-block-themes
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Problem type
+      options:
+        - Broken or redirected link
+        - Project archived, migrated, or no longer maintained
+        - Description no longer matches the source
+        - Language editions do not match
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What is wrong and what is the evidence?
+      description: Link to the upstream notice, commit, or page that shows the problem.
+    validations:
+      required: true
+  - type: input
+    id: checked
+    attributes:
+      label: Checked on
+      placeholder: YYYY-MM-DD

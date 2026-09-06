@@ -1,0 +1,60 @@
+name: Suggest a skill or MCP integration
+description: Propose a new entry when you cannot open a pull request or translate it yourself.
+title: "[Suggestion]: "
+labels: [suggestion]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read the [selection criteria](https://github.com/fellyph/awesome-wp-skills/blob/main/CONTRIBUTING.md#selection-criteria) first. Entries need a public primary source, an identifiable maintainer, documented functionality, and a concrete WordPress use case.
+  - type: input
+    id: source
+    attributes:
+      label: Primary source
+      description: Direct link to the maintainer's repository, `SKILL.md`, or official product documentation.
+      placeholder: https://github.com/owner/repo/blob/main/skills/example/SKILL.md
+    validations:
+      required: true
+  - type: input
+    id: maintainer
+    attributes:
+      label: Maintainer and resource type
+      description: Distinguish a community project from a vendor integration.
+      placeholder: Example Org · agent skill / MCP server / plugin / hosted service
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: WordPress use case
+      description: One concise description of what it does and why a WordPress developer would use it.
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements, beta status, or limitations
+      description: Runtimes, client capabilities, authentication, paid plans, or beta status.
+  - type: input
+    id: checked
+    attributes:
+      label: Source checked on
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: dropdown
+    id: verification
+    attributes:
+      label: Verification
+      options:
+        - Documentation review only
+        - Tested hands-on
+    validations:
+      required: true
+  - type: checkboxes
+    id: translation
+    attributes:
+      label: Languages
+      options:
+        - label: I can help translate the entry into Spanish.
+        - label: I can help translate the entry into Brazilian Portuguese.

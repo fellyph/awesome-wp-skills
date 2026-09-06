@@ -39,7 +39,7 @@ Update these editions together, retaining the same entries, links, commands, and
 
 Keep product names, skill identifiers, CLI commands, and URLs unchanged. Translate headings and update their table-of-contents anchors. Use the [WordPress pt-BR glossary](https://translate.wordpress.org/locale/pt-br/default/glossary/) and [Brazilian translation guidance](https://br.wordpress.org/team/handbook/traducao/boas-praticas/) for Brazilian Portuguese terminology.
 
-If you cannot translate an addition, open an issue with the source evidence so a contributor can help before it is merged.
+If you cannot translate an addition, open an issue with the suggestion template and the source evidence so a contributor can help before it is merged. Use the same page to report a broken link, an archived project, or a mismatch between editions.
 
 ## Before submitting
 
@@ -51,11 +51,11 @@ If you cannot translate an addition, open an issue with the source evidence so a
 
 ## Automated PR checks
 
-The [validation workflow](.github/workflows/validate.yml) runs on every pull request, pushes to `main`, and manual dispatch. Three independent checks report formatting, broken links, and invalid skill sources. No personal access token is needed for PRs, including fork PRs; the workflow uses GitHub's read-only token.
+The [validation workflow](.github/workflows/validate.yml) runs on every pull request, pushes to `main`, a weekly schedule, and manual dispatch. The scheduled run catches link rot and upstream skill changes between contributions. Three independent checks report formatting, broken links, and invalid skill sources. No personal access token is needed for PRs, including fork PRs; the workflow uses GitHub's read-only token.
 
 - **Markdown formatting:** markdownlint checks every Markdown file, including PR templates. Long lines and compact table spacing are allowed by the repository configuration.
 - **Links and anchors:** Lychee checks HTTP responses, local files, and heading anchors. Redirects are followed and temporary failures retried; HTTP errors are not treated as successful checks. Code-block examples are excluded.
-- **Agent Skill sources:** the Python validator checks catalog entries between the `skills:start` and `skills:end` comments in each README. It requires matching skill names and URLs in all editions. Each primary skill link must be a public GitHub `SKILL.md`, a directory containing one, or a repository containing one. Files must have YAML `name` and `description` strings and an instruction body. This verifies basic structure, not quality or safety. MCP and supporting documentation links only need to pass the link check.
+- **Agent Skill sources:** the Python validator checks catalog entries between the `skills:start` and `skills:end` comments in each README. It requires matching skill names and URLs in all editions, and the same link destinations and code examples across the whole document; only translated heading anchors may differ. Each primary skill link must be a public GitHub `SKILL.md`, a directory containing one, or a repository containing one. Files must have YAML `name` and `description` strings and an instruction body. This verifies basic structure, not quality or safety. MCP and supporting documentation links only need to pass the link check.
 
 Place new skill bullets inside the markers, starting with the linked skill name. Keep secondary website links in the description. Use a direct `SKILL.md` link when possible; a collection link only proves that at least one valid skill exists. To support another hosting provider, extend the validator with regression tests instead of adding a bypass.
 
@@ -71,6 +71,8 @@ python3 -m venv .venv
 ```
 
 For the live skill check, an optional `GITHUB_TOKEN` environment variable increases GitHub API limits. Never commit a token. A failed external request may mean a rate limit or outage rather than a removed resource; inspect the job output and rerun once the upstream problem is resolved.
+
+[Dependabot](.github/dependabot.yml) opens weekly pull requests for the pinned GitHub Actions and the validator's Python dependencies.
 
 To prevent merging failed checks, a maintainer must select **Markdown formatting**, **Links and anchors**, and **Agent Skill sources** as required status checks in the repository's branch rules after the workflow has run.
 

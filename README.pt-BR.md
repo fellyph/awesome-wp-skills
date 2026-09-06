@@ -2,6 +2,8 @@
 
 [English](README.md) · [Español](README.es.md) · [Português do Brasil](README.pt-BR.md)
 
+[![Validate repository](https://github.com/fellyph/awesome-wp-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/fellyph/awesome-wp-skills/actions/workflows/validate.yml)
+
 Uma seleção de skills para agentes e integrações MCP para quem desenvolve com WordPress. Temas, plugins, blocos, acessibilidade, desempenho, design, testes e construtores de sites em um só lugar.
 
 Um bom desenvolvimento com WordPress aproveita todo o ecossistema da web. Esta lista reúne tanto conhecimentos específicos de WordPress quanto ferramentas gerais com aplicação prática no WordPress.
