@@ -57,11 +57,36 @@ def catalog_entries(text):
     return entries
 
 
+def document_links(text):
+    """Every link and image destination in a document, except same-page heading anchors."""
+    links = set()
+    for token in MarkdownIt().parse(text):
+        for child in token.children or []:
+            if child.type == "link_open":
+                links.add(child.attrGet("href"))
+            elif child.type == "image":
+                links.add(child.attrGet("src"))
+    return {link for link in links if not link.startswith("#")}
+
+
+def code_blocks(text):
+    """Fenced and indented code examples, in document order."""
+    return [t.content for t in MarkdownIt().parse(text) if t.type in ("fence", "code_block")]
+
+
 def matching_catalogs(documents):
+    """Require the same catalog, links, and commands in every language edition."""
     canonical = catalog_entries(documents[0])
+    links = document_links(documents[0])
+    examples = code_blocks(documents[0])
     for name, text in zip(READMES[1:], documents[1:]):
         if Counter(catalog_entries(text)) != Counter(canonical):
             raise ValidationError(f"{name}: skill names and URLs must match README.md")
+        drift = sorted(document_links(text) ^ links)
+        if drift:
+            raise ValidationError(f"{name}: links must match README.md; differing: {', '.join(drift)}")
+        if code_blocks(text) != examples:
+            raise ValidationError(f"{name}: code examples must match README.md")
     return canonical
 
 

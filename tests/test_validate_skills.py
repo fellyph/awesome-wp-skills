@@ -1,13 +1,16 @@
 """Regression checks for catalog parsing and rejecting misleading skill links."""
 
 import base64
+import io
 from pathlib import Path
 import sys
 import unittest
+from unittest import mock
+from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from validate_skills import (  # noqa: E402
-    END, START, ValidationError, catalog_entries, check_skill,
+    END, START, ValidationError, catalog_entries, check_skill, github_api,
     matching_catalogs, validate_source,
 )
 
@@ -49,6 +52,20 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(len(matching_catalogs([document()] * 3)), 1)
         with self.assertRaises(ValidationError):
             matching_catalogs([document(), document().replace("owner/repo", "other/repo"), document()])
+
+    def test_translation_links_outside_catalog_must_match(self):
+        english = document() + "\n| [MCP](https://example.org/mcp) |\n\n![Badge](https://example.org/badge.svg)\n"
+        translated = english.replace("https://example.org/mcp", "https://example.org/mcp-es")
+        with self.assertRaisesRegex(ValidationError, "README.es.md.*mcp-es"):
+            matching_catalogs([english, translated, english])
+        # Heading anchors are translated, so they may differ between editions.
+        self.assertEqual(len(matching_catalogs([english + "[a](#start-here)\n", english + "[a](#empieza-aqui)\n", english])), 1)
+
+    def test_translation_commands_must_match(self):
+        english = document() + "\n```sh\nnpx skills add owner/repo --skill example\n```\n"
+        translated = english.replace("--skill example", "--skill exemplo")
+        with self.assertRaisesRegex(ValidationError, "README.pt-BR.md: code examples"):
+            matching_catalogs([english, english, translated])
 
 
 class SourceTests(unittest.TestCase):
@@ -102,6 +119,38 @@ class SourceTests(unittest.TestCase):
                      "---\nname: example\ndescription: text\n---\n"):
             with self.subTest(text=text), self.assertRaises(ValidationError):
                 check_skill(text)
+
+
+class GitHubApiTests(unittest.TestCase):
+    def setUp(self):
+        github_api.cache_clear()
+
+    def http_error(self, code):
+        return HTTPError("https://api.github.com/x", code, "error", {}, None)
+
+    def test_transient_errors_are_retried(self):
+        responses = [self.http_error(503), io.BytesIO(b'{"ok": true}')]
+        with mock.patch("validate_skills.urlopen", side_effect=responses) as urlopen, \
+                mock.patch("validate_skills.time.sleep") as sleep:
+            self.assertEqual(github_api("/repos/owner/repo"), {"ok": True})
+        self.assertEqual(urlopen.call_count, 2)
+        sleep.assert_called_once_with(1)
+
+    def test_client_errors_fail_immediately_with_a_hint(self):
+        with mock.patch("validate_skills.urlopen", side_effect=self.http_error(403)) as urlopen, \
+                mock.patch("validate_skills.time.sleep") as sleep:
+            with self.assertRaisesRegex(ValidationError, "HTTP 403 .*rate limits"):
+                github_api("/repos/owner/repo")
+        self.assertEqual(urlopen.call_count, 1)
+        sleep.assert_not_called()
+
+    def test_token_is_only_sent_to_the_github_api(self):
+        with mock.patch.dict("os.environ", {"GITHUB_TOKEN": "secret"}), \
+                mock.patch("validate_skills.urlopen", return_value=io.BytesIO(b"{}")) as urlopen:
+            github_api("/repos/owner/repo")
+        request = urlopen.call_args[0][0]
+        self.assertEqual(request.full_url, "https://api.github.com/repos/owner/repo")
+        self.assertEqual(request.get_header("Authorization"), "Bearer secret")
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ Initial documentation review: **2026-09-05**.
 
 ## Scope and method
 
-The first round covers 29 agent skills and 8 MCP integrations. Research was split across WordPress skills, general web skills, and MCP/site-builder integrations, then consolidated into the three READMEs.
+The catalog currently lists 28 agent skills and 8 MCP integrations. Research was split across WordPress skills, general web skills, and MCP/site-builder integrations, then consolidated into the three READMEs.
 
 Entries were selected from maintainer-controlled repositories and product documentation. Individual skill instructions were inspected, along with installation notes and relevant migration notices. The WordPress use cases and suggested combinations are editorial assessments of documented capabilities.
 
@@ -21,7 +21,7 @@ The README entry links are the primary evidence for each description. These coll
 | [Addy Osmani's web-quality-skills](https://github.com/addyosmani/web-quality-skills) | Six individual skill files; collection is unofficial and stack-agnostic. |
 | [Chrome DevTools skills](https://github.com/ChromeDevTools/chrome-devtools-mcp) | Accessibility debugging instructions (a11y-debugging) using the accessibility tree, Lighthouse, and Chrome DevTools MCP. |
 | [Anthropic skills](https://github.com/anthropics/skills) | Frontend design and Python Playwright web application testing instructions. |
-| [Vercel agent-skills](https://github.com/vercel-labs/agent-skills) | Web design and React skill files; React guidance also contains framework-specific material. |
+| [Vercel agent-skills](https://github.com/vercel-labs/agent-skills) | Web design guidelines skill file. The collection's React guidance was reviewed and excluded; see below. |
 | [Cloudflare security-audit-skill](https://github.com/cloudflare/security-audit-skill) | Actual skill, independent validation workflow, subagent support, and Node.js requirements. |
 | [Skills CLI](https://github.com/vercel-labs/skills) | Documented installation syntax; commands in the READMEs were not executed. |
 
@@ -43,6 +43,7 @@ The README entry links are the primary evidence for each description. These coll
 - [Automattic/agent-skills](https://github.com/Automattic/agent-skills) is archived and directs development to WordPress/agent-skills. The original block-theme recommendation now uses the maintained source.
 - [Automattic/wordpress-mcp](https://github.com/Automattic/wordpress-mcp) directs users toward WordPress/mcp-adapter; it is not recommended as a separate current integration.
 - [WPCursor/elementor-mcp](https://github.com/WPCursor/elementor-mcp) describes tools still to be implemented. It was excluded from this first round.
+- [React Best Practices](https://github.com/vercel-labs/agent-skills/blob/main/skills/react-best-practices/SKILL.md) from Vercel was listed in the first round and later removed. Its guidance is framework-specific and has no distinct WordPress use case beyond generic React advice.
 - [Automattic/wordpress-agent-skills](https://github.com/Automattic/wordpress-agent-skills) is a different repository with prototype theme/site workflows. Its beta/non-production status and lack of individual skill verification in this review kept it out of the initial catalog.
 
 ## Localization
