@@ -63,6 +63,10 @@ jobs:
           path: results/live/
           run-id: ${{ inputs.resume_run_id }}
           github-token: ${{ github.token }}
+      - name: Restore shared model allowance across CI rounds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -m benchmark.ci_budget
       - name: Run or resume models within configured budgets
         env:
           ROUND_CONFIG: ${{ inputs.config }}
@@ -79,6 +83,14 @@ jobs:
           name: benchmark-live
           path: results/live/
           retention-days: 30
+      - name: Preserve model budget even after interrupted generation
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: benchmark-model-budget
+          path: results/model-budget-ledger.json
+          retention-days: 90
+          if-no-files-found: warn
       - name: Publish job summary
         if: always()
         run: |

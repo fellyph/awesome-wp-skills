@@ -1,0 +1,32 @@
+{
+  "model": "claude-fable-5-1",
+  "skill": null,
+  "task": "agency-landing-page",
+  "category": "themes",
+  "profile": "wordpress-project-v2",
+  "scoring_version": "landing-page-v1",
+  "artifact_pass": null,
+  "execution_completion": false,
+  "delivery_success": false,
+  "status": "token_preflight_error",
+  "score": null,
+  "known_cost_usd": 0.0,
+  "cost_complete": true,
+  "tokens": 0,
+  "calls": 0,
+  "generation_seconds": 0.6730963329900987,
+  "evaluation_seconds": 76.1908076669788,
+  "development_iterations": 0,
+  "generation_status": "token_preflight_error",
+  "cost_basis": [
+    "simulated"
+  ],
+  "visual_review": {
+    "status": "pending",
+    "blind_id": "site-9c3f64ec"
+  },
+  "task_version": "1.0.0",
+  "checks": {},
+  "generated_artifact": false,
+  "generation_error": "Token preflight (no generation dispatched) HTTP 400 (invalid_request_error); no automatic retry"
+}

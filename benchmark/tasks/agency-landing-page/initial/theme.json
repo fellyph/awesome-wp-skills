@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "1160px",
+      "wideSize": "1360px"
+    },
+    "color": {
+      "palette": [
+        {
+          "slug": "paper",
+          "name": "Paper",
+          "color": "#f4f2eb"
+        },
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#213a31"
+        },
+        {
+          "slug": "moss",
+          "name": "Moss",
+          "color": "#dce6db"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "editorial",
+          "name": "Editorial",
+          "fontFamily": "Georgia, serif"
+        },
+        {
+          "slug": "body",
+          "name": "Body",
+          "fontFamily": "\"Trebuchet MS\", sans-serif"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#f4f2eb",
+      "text": "#213a31"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|body",
+      "fontSize": "18px",
+      "lineHeight": "1.6"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|editorial",
+          "fontWeight": "400",
+          "lineHeight": "1.08"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "#213a31"
+        }
+      },
+      "button": {
+        "color": {
+          "background": "#213a31",
+          "text": "#ffffff"
+        },
+        "border": {
+          "radius": "0"
+        }
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ]
+}

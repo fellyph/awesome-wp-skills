@@ -8,6 +8,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 from benchmark.core import ROOT, atomic_json, digest, load_round, matrix, read_json
 from benchmark.adapters import run_model
+from benchmark.budget import execution_key
 from benchmark.adapters.providers import PROVIDERS
 from benchmark.environments import evaluate
 
@@ -50,6 +51,15 @@ def exclusive_lock(output):
 
 def run(config_path, output, evaluator=evaluate, adapter=run_model):
     config = load_round(config_path)
+    if adapter is run_model and any(m['adapter'] != 'mock' for m in config['models']):
+        from benchmark.budget import BudgetLedger
+        with BudgetLedger() as ledger:
+            return _run(config_path, output, evaluator, adapter, ledger)
+    return _run(config_path, output, evaluator, adapter)
+
+
+def _run(config_path, output, evaluator, adapter, ledger=None):
+    config = load_round(config_path)
     for model in config['models']:
         if model['adapter'] != 'mock' and adapter is run_model and not os.environ.get(PROVIDERS[model['adapter']][1]):
             raise ValueError(f"Set {PROVIDERS[model['adapter']][1]} before starting this round")
@@ -57,6 +67,7 @@ def run(config_path, output, evaluator=evaluate, adapter=run_model):
     output.mkdir(parents=True, exist_ok=True)
     identity = digest({'config': config, 'protocol': protocol_hash()})
     env = environment()
+    env['tool_profile'] = next(iter(config['resolved_tasks'].values()))['profile']
     with exclusive_lock(output):
         manifest_path = output / 'manifest.json'
         if manifest_path.exists():
@@ -111,8 +122,13 @@ def run(config_path, output, evaluator=evaluate, adapter=run_model):
                 if remaining < config['limits']['max_run_usd'] and model['adapter'] != 'mock':
                     skipped.append(run_id)
                     continue
+                if ledger and model['adapter'] != 'mock' and not ledger.reserve(execution_key(manifest, run_id), model, config['limits']['max_run_usd'], config['limits']['max_model_usd']):
+                    skipped.append(run_id)
+                    continue
                 atomic_json(progress_path, {'phase': 'generating', 'started_at': started, 'condition': condition})
                 agent = adapter(model, task, skill, config['limits'], lambda state: atomic_json(agent_path, state))
+                if ledger and model['adapter'] != 'mock':
+                    ledger.settle(execution_key(manifest, run_id), agent)
                 agent['generation_seconds'] = time.monotonic() - timer
                 atomic_json(agent_path, agent)
                 atomic_json(progress_path, {'phase': 'evaluating', 'started_at': started, 'condition': condition})
@@ -129,7 +145,12 @@ def run(config_path, output, evaluator=evaluate, adapter=run_model):
             # Preserve criteria evidence, but a budget-limited or incomplete generation is not a success.
             complete = agent['status'] == 'completed'
             result = {**condition, 'run_id': run_id, 'started_at': started, 'finished_at': utcnow(),
-                      'environment': env, 'task_hash': task['hash'],
+                      'environment': env, 'task_hash': task['hash'], 'task_version': task['version'],
+                      'profile': task['profile'], 'scoring_version': task['scoring_version'],
+                      'artifact_pass': evaluation['success'], 'execution_completion': complete,
+                      'delivery_success': complete and evaluation['success'],
+                      'visual_review': {'status': 'pending'} if task['profile'] == 'wordpress-project-v2' else None,
+                      'development_iterations': agent.get('development_iterations', 0),
                       'skill_hash': skill['sha256'] if skill else None,
                       'cost_basis': sorted({c.get('cost_basis', 'unknown') for c in agent['calls']}) or ['simulated'],
                       'adapter': model['adapter'], 'budget_group': budget_group,

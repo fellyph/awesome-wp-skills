@@ -1,0 +1,46 @@
+{
+  "model": "gpt-6-astra",
+  "skill": "frontend-design",
+  "task": "agency-landing-page",
+  "category": "themes",
+  "profile": "wordpress-project-v2",
+  "scoring_version": "landing-page-v1",
+  "artifact_pass": false,
+  "execution_completion": true,
+  "delivery_success": false,
+  "status": "failed",
+  "score": 85.0,
+  "known_cost_usd": 1.5828115000000003,
+  "cost_complete": true,
+  "tokens": 398831,
+  "calls": 17,
+  "generation_seconds": 390.33549312502146,
+  "evaluation_seconds": 50.57903345901286,
+  "development_iterations": 9,
+  "generation_status": "completed",
+  "cost_basis": [
+    "estimated_from_configured_rates"
+  ],
+  "visual_review": {
+    "status": "pending",
+    "blind_id": "site-11ccdcef"
+  },
+  "task_version": "1.0.0",
+  "checks": {
+    "activation": true,
+    "blocks": true,
+    "editable": true,
+    "sections": true,
+    "cta": false,
+    "form": true,
+    "axe": true,
+    "keyboard": false,
+    "responsive": true,
+    "mobile_navigation": true,
+    "errors": true,
+    "assets": true,
+    "resources": true,
+    "security": true
+  },
+  "generated_artifact": true
+}

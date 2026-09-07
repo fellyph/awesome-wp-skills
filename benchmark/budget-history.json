@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "entries": {
+    "615fe5fb7a6a922d227ed5dd1963f06c4b97bfc0392ca5024c50733b684d1f37/2026-09-07T08:35:31.016088+00:00/0000-58826f3fc823": {
+      "model": "gemini-3.8-flash",
+      "source": "gemini-3.8-flash-first/runs/0000-58826f3fc823",
+      "known_usd": 0.010704,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "615fe5fb7a6a922d227ed5dd1963f06c4b97bfc0392ca5024c50733b684d1f37/2026-09-07T08:35:31.016088+00:00/0001-5a5378bb50ef": {
+      "model": "gemini-3.8-flash",
+      "source": "gemini-3.8-flash-first/runs/0001-5a5378bb50ef",
+      "known_usd": 0.0003285,
+      "reserved_usd": 0.043962,
+      "state": "uncertain"
+    },
+    "54d6ce794f8de039c33f884201670f38bd36727f075e0156f8d4b60908f3212f/2026-09-07T08:44:26.770751+00:00/0000-263c885018ab": {
+      "model": "gemini-3.8-flash",
+      "source": "gemini-3.8-flash-retry-1/runs/0000-263c885018ab",
+      "known_usd": 0.061706250000000004,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "54d6ce794f8de039c33f884201670f38bd36727f075e0156f8d4b60908f3212f/2026-09-07T08:44:26.770751+00:00/0001-bbf976c47c30": {
+      "model": "gemini-3.8-flash",
+      "source": "gemini-3.8-flash-retry-1/runs/0001-bbf976c47c30",
+      "known_usd": 0.06763275,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "54d6ce794f8de039c33f884201670f38bd36727f075e0156f8d4b60908f3212f/2026-09-07T08:44:26.770751+00:00/0002-3c6878880ce3": {
+      "model": "gemini-3.8-flash",
+      "source": "gemini-3.8-flash-retry-1/runs/0002-3c6878880ce3",
+      "known_usd": 0.12794025,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "374e15a05c7f309eda9473dd2b0c9db8a894f434674f4b22c399828f4e3269e7/2026-09-07T08:13:03.176821+00:00/0000-b81badb28c80": {
+      "model": "gpt-6-astra",
+      "source": "gpt-6-astra-first/runs/0000-b81badb28c80",
+      "known_usd": 0,
+      "reserved_usd": 1.17088,
+      "state": "uncertain"
+    },
+    "374e15a05c7f309eda9473dd2b0c9db8a894f434674f4b22c399828f4e3269e7/2026-09-07T08:26:28.671078+00:00/0000-b81badb28c80": {
+      "model": "gpt-6-astra",
+      "source": "gpt-6-astra-retry-1/runs/0000-b81badb28c80",
+      "known_usd": 0,
+      "reserved_usd": 1.17088,
+      "state": "uncertain"
+    },
+    "f2e9f17afaf9ef8eb0132921edd4af8be4e24b216b2a2964b150a2bca308a769/2026-09-07T08:30:03.386553+00:00/0000-d907aa8ff13a": {
+      "model": "gpt-6-astra",
+      "source": "gpt-6-astra-retry-2/runs/0000-d907aa8ff13a",
+      "known_usd": 0,
+      "reserved_usd": 1.17088,
+      "state": "uncertain"
+    }
+  }
+}

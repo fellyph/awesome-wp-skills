@@ -1,0 +1,46 @@
+{
+  "model": "gpt-6-astra",
+  "skill": "wp-block-themes",
+  "task": "agency-landing-page",
+  "category": "themes",
+  "profile": "wordpress-project-v2",
+  "scoring_version": "landing-page-v1",
+  "artifact_pass": false,
+  "execution_completion": false,
+  "delivery_success": false,
+  "status": "monetary_limit",
+  "score": 85.0,
+  "known_cost_usd": 2.7879519999999993,
+  "cost_complete": true,
+  "tokens": 718759,
+  "calls": 26,
+  "generation_seconds": 454.06306608300656,
+  "evaluation_seconds": 41.2425696249702,
+  "development_iterations": 19,
+  "generation_status": "monetary_limit",
+  "cost_basis": [
+    "estimated_from_configured_rates"
+  ],
+  "visual_review": {
+    "status": "pending",
+    "blind_id": "site-aff052a2"
+  },
+  "task_version": "1.0.0",
+  "checks": {
+    "activation": true,
+    "blocks": true,
+    "editable": true,
+    "sections": true,
+    "cta": false,
+    "form": true,
+    "axe": true,
+    "keyboard": false,
+    "responsive": true,
+    "mobile_navigation": true,
+    "errors": true,
+    "assets": true,
+    "resources": true,
+    "security": true
+  },
+  "generated_artifact": true
+}
