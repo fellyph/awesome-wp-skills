@@ -18,13 +18,21 @@ def main(argv=None):
     validate = sub.add_parser('validate', help='Validate tasks, blueprints and a round without model calls')
     validate.add_argument('--config', type=Path, default=ROOT / 'configs/smoke.json')
     plan = sub.add_parser('plan', help='Print the matrix without starting any executions')
-    plan.add_argument('--config', type=Path, default=ROOT / 'configs/pilot.json')
+    plan.add_argument('--config', type=Path, default=ROOT / 'configs/landing-page.json')
     execute = sub.add_parser('run', help='Execute or resume the exact configured round')
     execute.add_argument('--config', required=True, type=Path)
     execute.add_argument('--output', required=True, type=Path)
     execute.add_argument('--live', action='store_true', help='Explicitly enable billable model calls')
+    review = sub.add_parser('review', help='Import blinded human visual scores (0–4 per dimension)')
+    review.add_argument('directory', type=Path)
+    review.add_argument('--scores', required=True, type=Path)
     results = sub.add_parser('report', help='Regenerate Markdown, JSON and CSV summaries')
     results.add_argument('directory', type=Path)
+    project_tools = sub.add_parser('verify-project-tools', help='Exercise real public preview tools without a model API')
+    project_tools.add_argument('--output', type=Path, default=ROOT.parent / 'results/landing-tools')
+    project = sub.add_parser('verify-project', help='Audit the landing reference and seven broken variants in Playground')
+    project.add_argument('--output', type=Path, default=ROOT.parent / 'results/landing-audit')
+    project.add_argument('--variant', action='append', help='Only named variants; omit for the complete audit')
     fixtures = sub.add_parser('verify-fixtures', help='Evaluate known good and bad solutions in Playground')
     fixtures.add_argument('--category', choices=sorted(CATEGORIES))
     fixtures.add_argument('--output', type=Path, default=ROOT.parent / 'results/fixtures')
@@ -66,11 +74,23 @@ def main(argv=None):
         status = read_json(args.output / 'round-status.json')['status']
         if status != 'completed':
             return 2
+    elif args.command == 'review':
+        from benchmark.project_reporting import apply_reviews
+        apply_reviews(args.directory, args.scores)
+        report(args.directory)
     elif args.command == 'report':
         report(args.directory)
+    elif args.command == 'verify-project-tools':
+        from benchmark.project_fixtures import verify_tools
+        verify_tools(args.output)
+    elif args.command == 'verify-project':
+        from benchmark.project_fixtures import verify
+        if not verify(args.output, args.variant): return 1
     elif args.command == 'verify-fixtures':
         results = []
         for task in load_tasks().values():
+            if task.get('profile') == 'wordpress-project-v2':
+                continue  # Audited separately with targeted exploit variants by verify-project.
             if args.category and task['category'] != args.category:
                 continue
             for variant in ('initial', 'reference'):

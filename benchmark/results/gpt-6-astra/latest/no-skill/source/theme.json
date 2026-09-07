@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.9/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {"contentSize": "1152px", "wideSize": "1152px"},
+    "color": {"defaultPalette": false, "palette": [
+      {"slug": "paper", "name": "Paper", "color": "#f4f2eb"},
+      {"slug": "ink", "name": "Ink", "color": "#213a31"},
+      {"slug": "moss", "name": "Moss", "color": "#dce6db"}
+    ]},
+    "typography": {"fontFamilies": [
+      {"slug": "editorial", "name": "Editorial", "fontFamily": "Georgia, serif"},
+      {"slug": "body", "name": "Body", "fontFamily": "\"Trebuchet MS\", sans-serif"}
+    ]}
+  },
+  "styles": {
+    "color": {"background": "#f4f2eb", "text": "#213a31"},
+    "spacing": {"blockGap": "24px"},
+    "typography": {"fontFamily": "var:preset|font-family|body", "fontSize": "18px", "lineHeight": "1.6"},
+    "elements": {
+      "heading": {"typography": {"fontFamily": "var:preset|font-family|editorial", "fontWeight": "400", "lineHeight": "1.08", "letterSpacing": "-0.04em"}},
+      "h1": {"typography": {"fontSize": "88px"}},
+      "h2": {"typography": {"fontSize": "52px"}},
+      "h3": {"typography": {"fontSize": "30px", "letterSpacing": "-0.015em"}},
+      "link": {"color": {"text": "#213a31"}},
+      "button": {"color": {"background": "#213a31", "text": "#ffffff"}, "border": {"radius": "0"}, "typography": {"fontFamily": "var:preset|font-family|body", "fontSize": "16px", "fontWeight": "700"}, "spacing": {"padding": {"top": "18px", "bottom": "18px", "left": "27px", "right": "27px"}}}
+    }
+  },
+  "templateParts": [
+    {"name": "header", "title": "Header", "area": "header"},
+    {"name": "footer", "title": "Footer", "area": "footer"}
+  ]
+}

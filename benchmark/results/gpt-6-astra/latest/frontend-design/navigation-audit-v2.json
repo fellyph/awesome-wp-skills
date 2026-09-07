@@ -1,0 +1,19 @@
+{
+  "audit": "navigation-observation-v2",
+  "changes_to_artifact": false,
+  "cta_count": 1,
+  "cta_text": "Start a project →",
+  "cta_works": true,
+  "focus_visible": true,
+  "keyboard_cta_works": true,
+  "keyboard_faq_works": true,
+  "journey": [
+    "Skip to content",
+    "NORTHLINE /",
+    "Services",
+    "Work",
+    "Studio",
+    "Contact",
+    "Start a project →"
+  ]
+}

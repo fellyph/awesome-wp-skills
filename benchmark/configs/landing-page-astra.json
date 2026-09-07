@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "seed": 1729,
+  "repetitions": 1,
+  "tasks": [
+    "agency-landing-page"
+  ],
+  "skills": [
+    "wp-block-themes",
+    "frontend-design"
+  ],
+  "models": [
+    {
+      "id": "gpt-6-astra",
+      "adapter": "openai",
+      "parameters": {
+        "reasoning_effort": "medium"
+      },
+      "pricing": {
+        "input_per_million_usd": 10,
+        "output_per_million_usd": 50,
+        "cached_input_per_million_usd": 1,
+        "cache_write_per_million_usd": 12.5,
+        "source_url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+        "checked_on": "2026-09-07"
+      }
+    }
+  ],
+  "limits": {
+    "timeout_seconds": 900,
+    "max_calls": 40,
+    "max_output_tokens": 32768,
+    "max_total_tokens": 1000000,
+    "max_run_usd": 5.4,
+    "max_round_usd": 16.2,
+    "max_model_usd": 20
+  }
+}

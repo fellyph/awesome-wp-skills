@@ -3,6 +3,7 @@ import copy
 import json
 import math
 import os
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -25,6 +26,28 @@ PARAMETERS = {
 }
 
 
+def image_content(message, adapter):
+    """Native multimodal content for both brief images and tool screenshots."""
+    if adapter == 'openai':
+        return [{'type': 'input_text', 'text': message['content']}] + [
+            {'type': 'input_image', 'image_url': f"data:{i['mime_type']};base64,{i['data']}", 'detail': 'high'}
+            for i in message.get('_images', [])]
+    return [{'type': 'text', 'text': message['content']}] + [
+        {'type': 'image', 'source': {'type': 'base64', 'media_type': i['mime_type'], 'data': i['data']}}
+        for i in message.get('_images', [])]
+
+
+def http_failure(error, prefix):
+    """Keep actionable machine error codes without persisting raw provider messages."""
+    try:
+        detail = json.loads(error.read()).get('error', {})
+        code = detail.get('code') or detail.get('type') or detail.get('status')
+    except (ValueError, AttributeError):
+        code = None
+    suffix = f' ({code})' if isinstance(code, str) and re.fullmatch(r'[A-Za-z0-9_.-]{1,100}', code) else ''
+    return RuntimeError(f'{prefix} HTTP {error.code}{suffix}; no automatic retry')
+
+
 def build_request(model, messages, tools, max_tokens):
     adapter = model['adapter']
     url, variable = PROVIDERS[adapter]
@@ -38,9 +61,9 @@ def build_request(model, messages, tools, max_tokens):
                 native.extend(copy.deepcopy(message['_native']))
             elif message['role'] == 'tool':
                 native.append({'type': 'function_call_output', 'call_id': message['tool_call_id'],
-                               'output': message['content']})
+                               'output': image_content(message, adapter) if message.get('_images') else message['content']})
             else:
-                native.append({'role': message['role'], 'content': message['content']})
+                native.append({'role': message['role'], 'content': image_content(message, adapter) if message.get('_images') else message['content']})
         effort = parameters.pop('reasoning_effort', None)
         payload = {'model': model['id'], 'input': native,
                    'tools': [{'type': 'function', **copy.deepcopy(t['function']), 'strict': True} for t in tools],
@@ -63,9 +86,10 @@ def build_request(model, messages, tools, max_tokens):
             if role == 'assistant':
                 blocks = message['_native']
             elif role == 'tool':
-                blocks = [{'type': 'tool_result', 'tool_use_id': message['tool_call_id'], 'content': message['content']}]
+                blocks = [{'type': 'tool_result', 'tool_use_id': message['tool_call_id'],
+                           'content': image_content(message, adapter) if message.get('_images') else message['content']}]
             else:
-                blocks = [{'type': 'text', 'text': message['content']}]
+                blocks = image_content(message, adapter)
             native_role = 'assistant' if role == 'assistant' else 'user'
             if native and native[-1]['role'] == native_role:
                 native[-1]['content'].extend(blocks)
@@ -79,6 +103,8 @@ def build_request(model, messages, tools, max_tokens):
                                               'response': {'result': json.loads(message['content'])}}}]
             else:
                 parts = [{'text': message['content']}]
+            if role != 'assistant':
+                parts.extend({'inlineData': {'mimeType': i['mime_type'], 'data': i['data']}} for i in message.get('_images', []))
             native_role = 'model' if role == 'assistant' else 'user'
             if native and native[-1]['role'] == native_role:
                 native[-1]['parts'].extend(copy.deepcopy(parts))
@@ -86,6 +112,8 @@ def build_request(model, messages, tools, max_tokens):
                 native.append({'role': native_role, 'parts': copy.deepcopy(parts)})
     if adapter == 'anthropic':
         headers['anthropic-version'] = '2023-06-01'
+        if os.environ.get('ANTHROPIC_WORKSPACE_ID'):
+            headers['anthropic-workspace-id'] = os.environ['ANTHROPIC_WORKSPACE_ID']
         payload = {'model': model['id'], 'max_tokens': max_tokens, 'system': messages[0]['content'],
                    'messages': native, 'tools': [{'name': t['function']['name'], 'description': t['function']['description'],
                    'input_schema': t['function']['parameters']} for t in tools], **parameters}
@@ -132,6 +160,8 @@ def normalize(model, response):
                          prompt_tokens_details=raw.get('input_tokens_details') or {},
                          completion_tokens_details=raw.get('output_tokens_details') or {})
         finish = ('tool_calls' if calls else 'stop') if completed else response.get('status', 'incomplete')
+        if (response.get('incomplete_details') or {}).get('reason') == 'max_output_tokens':
+            finish = 'length'
         text = ''.join(part.get('text', '') for item in native if item['type'] == 'message'
                        for part in item.get('content', []) if part['type'] == 'output_text')
     elif adapter == 'anthropic':
@@ -168,7 +198,7 @@ def normalize(model, response):
             usage.update(prompt_tokens=prompt, completion_tokens=total-prompt, total_tokens=total,
                          prompt_tokens_details={'cached_tokens': raw.get('cachedContentTokenCount', 0)},
                          completion_tokens_details={'reasoning_tokens': raw.get('thoughtsTokenCount', 0)})
-        finish = 'tool_calls' if calls else ('stop' if candidate.get('finishReason') == 'STOP' else candidate.get('finishReason', 'blocked'))
+        finish = ('tool_calls' if calls else 'stop') if candidate.get('finishReason') == 'STOP' else candidate.get('finishReason', 'blocked')
         text = ''.join(p.get('text', '') for p in native['parts'] if not p.get('thought'))
     return {'id': response.get('id', response.get('responseId')), 'model': response.get('model', response.get('modelVersion')),
             'usage': usage, 'choices': [{'finish_reason': finish, 'message': {'role': 'assistant', 'content': text,
@@ -186,12 +216,20 @@ def estimate_cost(model, usage):
     if not number(cached) or not number(created) or cached + created > prompt:
         return None
     rates = model['pricing']
+    input_multiplier, output_multiplier = pricing_multipliers(model, prompt)
     # Missing cache-specific rates use conservative normal-input pricing, with cache writes
     # charged at at least 2x input. Reports label all direct-provider costs as estimates.
     read_rate = rates.get('cached_input_per_million_usd', rates['input_per_million_usd'])
     write_rate = rates.get('cache_write_per_million_usd', 2 * rates['input_per_million_usd'])
-    return ((prompt-cached-created)*rates['input_per_million_usd'] + cached*read_rate + created*write_rate
-            + completion*rates['output_per_million_usd']) / 1_000_000
+    return (((prompt-cached-created)*rates['input_per_million_usd'] + cached*read_rate + created*write_rate) * input_multiplier
+            + completion*rates['output_per_million_usd'] * output_multiplier) / 1_000_000
+
+
+def pricing_multipliers(model, input_tokens):
+    # Astra's long-context tier applies to the entire request, including output.
+    if model['adapter'] == 'openai' and model['id'].startswith('gpt-6-astra') and input_tokens > 272_000:
+        return 2, 1.5
+    return 1, 1
 
 
 def request(model, messages, tools, max_tokens, timeout):
@@ -210,7 +248,7 @@ def request(model, messages, tools, max_tokens, timeout):
         with urllib.request.urlopen(req, timeout=timeout) as result:
             raw = json.load(result)
     except urllib.error.HTTPError as error:
-        raise RuntimeError(f'Provider HTTP {error.code}; no automatic retry') from None
+        raise http_failure(error, 'Provider') from None
     response = normalize(model, raw)
     usage = response.setdefault('usage', {})
     if model['adapter'] != 'openrouter':
@@ -219,3 +257,35 @@ def request(model, messages, tools, max_tokens, timeout):
     else:
         usage['cost_basis'] = 'provider_reported' if number(usage.get('cost')) else 'unavailable'
     return response
+
+
+def count_tokens(model, messages, tools, max_tokens, timeout):
+    """Count actual native inputs, tools, signatures and images before generation."""
+    url, variable, headers, payload = build_request(model, messages, tools, max_tokens)
+    if model['adapter'] == 'gemini':
+        headers['x-goog-api-key'] = os.environ[variable]
+        request_body = {'generateContentRequest': {'model': 'models/' + model['id'], **payload}}
+        url = url.replace(':generateContent', ':countTokens')
+        field = 'totalTokens'
+    elif model['adapter'] == 'openai':
+        headers['Authorization'] = 'Bearer ' + os.environ[variable]
+        request_body = {k: v for k, v in payload.items() if k in ('model', 'input', 'tools', 'reasoning')}
+        url += '/input_tokens'
+        field = 'input_tokens'
+    elif model['adapter'] == 'anthropic':
+        headers['x-api-key'] = os.environ[variable]
+        request_body = {k: v for k, v in payload.items() if k in ('model', 'messages', 'system', 'tools', 'thinking', 'output_config')}
+        url += '/count_tokens'
+        field = 'input_tokens'
+    else:
+        raise ValueError('Adapter does not support accurate multimodal preflight')
+    req = urllib.request.Request(url,
+        data=json.dumps(request_body).encode(), headers=headers, method='POST')
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as result:
+            value = json.load(result).get(field)
+    except urllib.error.HTTPError as error:
+        raise http_failure(error, 'Token preflight (no generation dispatched)') from None
+    if type(value) is not int or value < 0:
+        raise ValueError('Token preflight returned invalid usage')
+    return value

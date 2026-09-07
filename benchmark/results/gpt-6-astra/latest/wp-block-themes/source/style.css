@@ -1,0 +1,92 @@
+/*
+Theme Name: Northline
+Description: An independent agency's restrained, editable block theme.
+Version: 1.0.0
+Requires at least: 6.9
+Requires PHP: 7.4
+License: GPL-2.0-or-later
+Text Domain: benchmark-fixture
+*/
+* { box-sizing: border-box; }
+body { margin: 0; }
+.wp-site-blocks > * { margin-block: 0; }
+.site-header, .site-main, .site-footer { width: calc(100% - 128px); max-width: 1152px; margin-inline: auto; }
+.site-header { min-height: 97px; border-bottom: 1px solid #b3bdb3; padding-block: 28px; }
+.wordmark { font-size: 24px; font-weight: 700; letter-spacing: -1.2px; line-height: 1.3; margin: 0; }
+.wordmark a { text-decoration: none; }
+.site-header .wp-block-navigation { font-size: 14px; }
+.site-header .wp-block-navigation__container { gap: 24px; }
+a:hover { text-decoration: underline; text-underline-offset: 4px; }
+:where(a, button, input, textarea, summary):focus-visible { outline: 2px solid #213a31; outline-offset: 5px; }
+.wp-block-navigation__responsive-container-open, .wp-block-navigation__responsive-container-close { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+.site-header .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open { background: #f4f2eb; color: #213a31; padding: 28px 24px; }
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container { gap: 28px; font-size: 24px; }
+:where(.northline-landing) > *, :where(.northline-landing .wp-block-group) > *, :where(.northline-landing) figure, :where(.northline-landing) blockquote { margin-block: 0; }
+.hero { padding-top: 88px; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.4px; line-height: 1.5; }
+.hero h1 { max-width: 950px; margin-top: 32px; font-size: 88px; line-height: 1.02; letter-spacing: -0.055em; }
+.hero .hero-copy { max-width: 560px; font-size: 21px; margin-top: 32px; }
+.hero .wp-block-buttons { margin-top: 32px; }
+.wp-block-button__link { text-decoration: none; }
+.wp-block-button__link:hover, .contact button:hover, .contact input[type="submit"]:hover { background: #355448; color: #fff; }
+.hero .hero-art { margin-top: 50px; }
+.hero-art img { width: 100%; height: 530px; object-fit: cover; display: block; }
+.section { padding-block: 100px 76px; border-bottom: 1px solid #b3bdb3; scroll-margin-top: 24px; }
+.section h2 { margin-top: 24px; font-size: 52px; }
+.service-grid, .work-grid { display: grid; gap: 40px; margin-top: 26px !important; }
+.service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.service-grid h3, .work-grid h3 { font-size: 30px; }
+.service-grid p { margin-top: 22px !important; }
+.work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.work-grid img { display: block; width: 100%; height: auto; }
+.work-grid h3 { margin-top: 20px !important; }
+.work-grid p { font-size: 14px; margin-top: 22px !important; }
+.testimonials .wp-block-quote { border: 0; padding: 0; max-width: 900px; margin-top: 40px; }
+.wp-block-quote p { font-family: Georgia, 'Times New Roman', serif; font-size: 48px; line-height: 1.22; letter-spacing: -0.015em; margin: 0; }
+.wp-block-quote cite { display: block; font-style: normal; font-size: 14px; margin-top: 28px; }
+.faq-list { max-width: 850px; margin-top: 26px !important; }
+.wp-block-details { border-top: 1px solid #b3bdb3; padding: 24px 0 46px; font-size: 20px; }
+.wp-block-details summary { cursor: pointer; }
+.wp-block-details p { font-size: 18px; margin-top: 20px !important; }
+.faq { padding-bottom: 54px; }
+.contact > p:not(.eyebrow) { margin-top: 26px; }
+.contact form { max-width: 720px; margin-top: 24px; }
+.contact form p { margin: 0 0 16px; }
+.contact label { display: block; font-size: 14px; margin-bottom: 6px; }
+.contact input:not([type="hidden"]):not([type="submit"]):not([type="checkbox"]), .contact textarea { display: block; width: 100%; background: #fff; border: 1px solid #71877a; border-radius: 0; color: #213a31; font: inherit; padding: 10px 12px; min-height: 50px; }
+.contact textarea { height: 140px; resize: vertical; }
+.contact button, .contact input[type="submit"] { border: 0; border-radius: 0; background: #213a31; color: #fff; font: 700 16px/1.5 'Trebuchet MS', sans-serif; padding: 18px 26px; cursor: pointer; }
+.site-footer { padding-block: 70px 40px; }
+.site-footer p:not(.wordmark) { font-size: 14px; margin-top: 28px; margin-bottom: 0; }
+@media (max-width: 700px) {
+ .site-header, .site-main, .site-footer { width: calc(100% - 46px); }
+ .site-header { min-height: 81px; padding-block: 18px; }
+ .hero { padding-top: 64px; }
+ .eyebrow { font-size: 10px; letter-spacing: 1.3px; }
+ .hero h1 { margin-top: 30px; font-size: 52px; line-height: 1.08; letter-spacing: -0.055em; }
+ .hero .hero-copy { margin-top: 30px; font-size: 18px; line-height: 1.6; }
+ .hero .wp-block-buttons { margin-top: 34px; }
+ .hero .hero-art { margin-top: 50px; }
+ .hero-art img { height: 330px; }
+ .section { padding-block: 72px 50px; }
+ .section h2 { margin-top: 26px; font-size: 36px; line-height: 1.03; letter-spacing: -0.045em; }
+ .service-grid, .work-grid { grid-template-columns: 1fr; gap: 28px; }
+ .service-grid { margin-top: 26px !important; }
+ .service-grid h3, .work-grid h3 { font-size: 30px; line-height: 1.2; }
+ .service-grid p { margin-top: 20px !important; }
+ .work-grid { margin-top: 26px !important; gap: 28px; }
+ .work-grid h3 { margin-top: 18px !important; }
+ .work-grid p { font-size: 14px; margin-top: 20px !important; }
+ .testimonials .wp-block-quote { margin-top: 40px; }
+ .wp-block-quote p { font-size: 28px; line-height: 1.22; }
+ .wp-block-quote cite { margin-top: 28px; font-size: 14px; }
+ .faq-list { margin-top: 26px !important; }
+ .wp-block-details { padding: 24px 0 46px; font-size: 20px; }
+ .faq { padding-bottom: 26px; }
+ .contact > p:not(.eyebrow) { margin-top: 28px; }
+ .contact form { margin-top: 28px; }
+ .contact form p { margin-bottom: 16px; }
+ .site-footer { padding-block: 72px 40px; }
+ .site-footer p:not(.wordmark) { margin-top: 28px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }

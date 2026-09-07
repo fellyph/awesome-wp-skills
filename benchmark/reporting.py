@@ -15,6 +15,10 @@ def report(directory):
     directory = Path(directory)
     manifest = read_json(directory / 'manifest.json')
     rows = [read_json(p) for p in sorted((directory / 'runs').glob('*/result.json'))]
+    if len({r.get('profile', 'files-only-v1') for r in rows}) > 1:
+        raise ValueError('Cannot pool different execution profiles in one report')
+    from benchmark.project_reporting import project_report
+    project_report(directory, manifest, rows)
     groups = defaultdict(list)
     baselines = {}
     for row in rows:
@@ -23,19 +27,19 @@ def report(directory):
             baselines[(row['task'], row['model'], row['repetition'], row['simulated'])] = row
     summaries = []
     for (category, task, model, skill, simulated), items in sorted(groups.items()):
-        valid = [r for r in items if r['evaluation']['status'] != 'infrastructure_error' and r.get('generation_status') not in ('provider_error', 'usage_unavailable')]
+        valid = [r for r in items if r['evaluation']['status'] != 'infrastructure_error' and r.get('generation_status') not in ('provider_error', 'provider_timeout', 'token_preflight_error', 'usage_unavailable')]
         scored = [r['score'] for r in valid if r['score'] is not None]
         costs = [r['cost_usd'] for r in items]
         all_costs_known = all(c is not None for c in costs)
         pairs = []
         for row in valid:
             base = baselines.get((task, model, row['repetition'], simulated))
-            if base and base['evaluation']['status'] != 'infrastructure_error' and base.get('generation_status') not in ('provider_error', 'usage_unavailable'):
+            if base and base['evaluation']['status'] != 'infrastructure_error' and base.get('generation_status') not in ('provider_error', 'provider_timeout', 'token_preflight_error', 'usage_unavailable'):
                 pairs.append((row, base))
         def delta(field):
             return mean(r[field] - b[field] for r,b in pairs if r[field] is not None and b[field] is not None)
         successes = sum(r['success'] for r in valid)
-        summaries.append({'category': category, 'task': task, 'model': model, 'skill': skill,
+        summaries.append({'profile': items[0].get('profile','files-only-v1'), 'scoring_version': items[0].get('scoring_version','micro-v1'), 'artifact_pass_rate': mean(r.get('artifact_pass',r['evaluation'].get('success',r['success'])) for r in valid), 'execution_completion_rate': mean(r.get('execution_completion',r.get('generation_status','completed')=='completed') for r in items), 'visual_reviews_pending': sum((r.get('visual_review') or {}).get('status')=='pending' for r in items), 'category': category, 'task': task, 'model': model, 'skill': skill,
                           'simulated': simulated, 'cost_basis': sorted({b for r in items for b in r.get('cost_basis', [])}), 'attempts': len(items), 'evaluated': len(valid),
                           'infrastructure_errors': len(items)-len(valid), 'success_rate': successes/len(valid) if valid else None,
                           'score_mean': mean(scored), 'score_stdev': statistics.stdev(scored) if len(scored)>1 else None,
@@ -64,6 +68,8 @@ def report(directory):
     lines += ['', 'Category comparisons on shared tasks are in category-summary.json. Pending or interrupted runs: ' + str(len(pending)) + '.', '', 'Comparisons are paired by task, model and repetition. Compare skills only on shared tasks.', '',
               'Infrastructure/provider errors are excluded from quality denominators and counted separately. Known costs of failed attempts remain included. Missing usage is N/A.', '',
               'See summary.json and summary.csv for cost/time differences and coverage. Source changes and evaluation evidence are under runs/.', '']
+    if any(r.get('profile') == 'wordpress-project-v2' for r in rows):
+        lines += ['', 'See [delivery report](deliveries.html) for reference/site comparisons, criterion evidence, packages, editor screenshots and source changes. Visual reviews are separate and pending until a human submits scores.']
     (directory / 'report.md').write_text('\n'.join(lines))
     return summaries
 

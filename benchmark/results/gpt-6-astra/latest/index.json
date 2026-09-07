@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "model": "gpt-6-astra",
+  "source_round": "landing-page-astra-20260907",
+  "conditions": [
+    {
+      "condition": "wp-block-themes",
+      "model": "gpt-6-astra",
+      "skill": "wp-block-themes",
+      "task": "agency-landing-page",
+      "category": "themes",
+      "profile": "wordpress-project-v2",
+      "scoring_version": "landing-page-v1",
+      "artifact_pass": false,
+      "execution_completion": false,
+      "delivery_success": false,
+      "status": "monetary_limit",
+      "score": 85.0,
+      "known_cost_usd": 2.7879519999999993,
+      "cost_complete": true,
+      "tokens": 718759,
+      "calls": 26,
+      "generation_seconds": 454.06306608300656,
+      "evaluation_seconds": 41.2425696249702,
+      "development_iterations": 19,
+      "generation_status": "monetary_limit",
+      "cost_basis": [
+        "estimated_from_configured_rates"
+      ],
+      "visual_review": {
+        "status": "pending",
+        "blind_id": "site-aff052a2"
+      },
+      "task_version": "1.0.0",
+      "checks": {
+        "activation": true,
+        "blocks": true,
+        "editable": true,
+        "sections": true,
+        "cta": false,
+        "form": true,
+        "axe": true,
+        "keyboard": false,
+        "responsive": true,
+        "mobile_navigation": true,
+        "errors": true,
+        "assets": true,
+        "resources": true,
+        "security": true
+      },
+      "generated_artifact": true
+    },
+    {
+      "condition": "no-skill",
+      "model": "gpt-6-astra",
+      "skill": null,
+      "task": "agency-landing-page",
+      "category": "themes",
+      "profile": "wordpress-project-v2",
+      "scoring_version": "landing-page-v1",
+      "artifact_pass": true,
+      "execution_completion": true,
+      "delivery_success": true,
+      "status": "passed",
+      "score": 100.0,
+      "known_cost_usd": 2.364737,
+      "cost_complete": true,
+      "tokens": 745863,
+      "calls": 29,
+      "generation_seconds": 515.5356087090331,
+      "evaluation_seconds": 42.2084562079981,
+      "development_iterations": 18,
+      "generation_status": "completed",
+      "cost_basis": [
+        "estimated_from_configured_rates"
+      ],
+      "visual_review": {
+        "status": "pending",
+        "blind_id": "site-f679a479"
+      },
+      "task_version": "1.0.0",
+      "checks": {
+        "activation": true,
+        "blocks": true,
+        "editable": true,
+        "sections": true,
+        "cta": true,
+        "form": true,
+        "axe": true,
+        "keyboard": true,
+        "responsive": true,
+        "mobile_navigation": true,
+        "errors": true,
+        "assets": true,
+        "resources": true,
+        "security": true
+      },
+      "generated_artifact": true
+    },
+    {
+      "condition": "frontend-design",
+      "model": "gpt-6-astra",
+      "skill": "frontend-design",
+      "task": "agency-landing-page",
+      "category": "themes",
+      "profile": "wordpress-project-v2",
+      "scoring_version": "landing-page-v1",
+      "artifact_pass": false,
+      "execution_completion": true,
+      "delivery_success": false,
+      "status": "failed",
+      "score": 85.0,
+      "known_cost_usd": 1.5828115000000003,
+      "cost_complete": true,
+      "tokens": 398831,
+      "calls": 17,
+      "generation_seconds": 390.33549312502146,
+      "evaluation_seconds": 50.57903345901286,
+      "development_iterations": 9,
+      "generation_status": "completed",
+      "cost_basis": [
+        "estimated_from_configured_rates"
+      ],
+      "visual_review": {
+        "status": "pending",
+        "blind_id": "site-11ccdcef"
+      },
+      "task_version": "1.0.0",
+      "checks": {
+        "activation": true,
+        "blocks": true,
+        "editable": true,
+        "sections": true,
+        "cta": false,
+        "form": true,
+        "axe": true,
+        "keyboard": false,
+        "responsive": true,
+        "mobile_navigation": true,
+        "errors": true,
+        "assets": true,
+        "resources": true,
+        "security": true
+      },
+      "generated_artifact": true
+    }
+  ],
+  "retention": "latest tracked result per model; raw runs remain ignored"
+}

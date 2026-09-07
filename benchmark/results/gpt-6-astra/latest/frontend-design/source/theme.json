@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.9/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {"contentSize": "1152px", "wideSize": "1152px"},
+    "color": {"defaultPalette": false, "palette": [
+      {"slug":"paper","name":"Paper","color":"#f4f2eb"},
+      {"slug":"ink","name":"Ink","color":"#213a31"},
+      {"slug":"moss","name":"Moss","color":"#dce6db"},
+      {"slug":"rule","name":"Rule","color":"#acb7ad"},
+      {"slug":"white","name":"White","color":"#ffffff"}
+    ]},
+    "typography": {
+      "fontFamilies": [
+        {"slug":"editorial","name":"Georgia","fontFamily":"Georgia, serif"},
+        {"slug":"body","name":"Trebuchet MS","fontFamily":"\"Trebuchet MS\", sans-serif"}
+      ],
+      "fontSizes": [
+        {"slug":"small","name":"Small","size":"14px"},
+        {"slug":"body","name":"Body","size":"18px"},
+        {"slug":"large","name":"Large","size":"30px"},
+        {"slug":"display","name":"Display","size":"clamp(54px, 7vw, 88px)"}
+      ]
+    },
+    "spacing": {"units":["px","rem","vw","%"],"blockGap":true}
+  },
+  "styles": {
+    "color": {"background":"var:preset|color|paper","text":"var:preset|color|ink"},
+    "spacing": {"blockGap":"24px"},
+    "typography": {"fontFamily":"var:preset|font-family|body","fontSize":"18px","lineHeight":"1.6"},
+    "elements": {
+      "heading": {"typography":{"fontFamily":"var:preset|font-family|editorial","fontWeight":"400","lineHeight":"1.08"}},
+      "h1": {"typography":{"fontSize":"clamp(54px, 7vw, 88px)","letterSpacing":"-0.055em"}},
+      "h2": {"typography":{"fontSize":"clamp(36px, 4.1vw, 52px)","letterSpacing":"-0.045em"}},
+      "h3": {"typography":{"fontSize":"30px","lineHeight":"1.2"}},
+      "link": {"color":{"text":"var:preset|color|ink"}},
+      "button": {"color":{"background":"var:preset|color|ink","text":"var:preset|color|white"},"border":{"radius":"0"},"typography":{"fontFamily":"var:preset|font-family|body","fontSize":"16px","fontWeight":"700"},"spacing":{"padding":{"top":"18px","bottom":"18px","left":"27px","right":"27px"}}}
+    }
+  },
+  "templateParts": [
+    {"name":"header","title":"Header","area":"header"},
+    {"name":"footer","title":"Footer","area":"footer"}
+  ]
+}
