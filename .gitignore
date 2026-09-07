@@ -3,3 +3,10 @@
 __pycache__/
 .lycheecache
 node_modules/
+# Benchmark outputs, fetched upstream resources and local credentials/configs.
+results/
+benchmark/.cache/
+benchmark/skills/
+benchmark/configs/*.local.json
+.env
+.env.*

@@ -1,0 +1,28 @@
+{
+  "id": "accessibility-disclosure",
+  "category": "accessibility",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "renders",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "axe",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "keyboard",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "semantics",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": "disclosure"
+}

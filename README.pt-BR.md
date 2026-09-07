@@ -18,6 +18,7 @@ Um bom desenvolvimento com WordPress aproveita todo o ecossistema da web. Esta l
 - [Skills de testes e segurança](#skills-de-testes-e-segurança)
 - [Servidores e integrações MCP](#servidores-e-integrações-mcp)
 - [Combinações sugeridas](#combinações-sugeridas)
+- [Benchmark de modelos e skills](#benchmark-de-modelos-e-skills)
 - [Como contribuir](#como-contribuir)
 
 ## Comece aqui
@@ -133,6 +134,10 @@ Estas combinações são pontos de partida, não pacotes testados. Selecione as 
 | Criar uma demonstração reproduzível | wp-playground + blueprint + Playwright MCP |
 | Implementar um design | Figma MCP + wpds ou Frontend Design + Web Design Guidelines |
 | Escrever um post ou página de destino | no-ai-slop + SEO + Impeccable |
+
+## Benchmark de modelos e skills
+
+O [framework de benchmark](benchmark/README.md) compara skills individuais e modelos nas categorias de temas, plugins, correções, performance e acessibilidade usando WordPress Playground no CI. Inclui adaptadores para APIs nativas e OpenRouter, limite de orçamento de US$ 20 por modelo e relatórios reproduzíveis. As rodadas incluídas são validações simuladas; os resultados com modelos reais ainda não foram publicados.
 
 ## Como contribuir
 

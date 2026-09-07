@@ -1,0 +1,1 @@
+bench_check('text',strpos(bench_notice('Saved!'),'Saved!')!==false); $r=bench_notice('<script>alert(1)</script>'); bench_check('escaped',strpos($r,'<script>')===false && strpos($r,'&lt;script&gt;')!==false); ob_start(); $r=bench_notice('A & B'); $out=ob_get_clean(); bench_check('return_only',$out==='' && strpos($r,'A &amp; B')!==false);

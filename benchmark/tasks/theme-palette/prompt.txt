@@ -1,0 +1,2 @@
+Configure theme.json with version 3, a brand color preset #14532d, content width 720px, wide width 1200px, and link color referencing the brand preset. Keep the theme editable.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

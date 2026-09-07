@@ -1,0 +1,2 @@
+Return an FAQ disclosure from bench_component() with a native button named Details, aria-expanded state, aria-controls referring to the panel, and keyboard Enter/Space support. Panel text is More information. Initially collapsed; update state when toggled.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

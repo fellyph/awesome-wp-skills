@@ -1,0 +1,23 @@
+{
+  "id": "fix-search",
+  "category": "fixes",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "matches",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "literal",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "injection",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

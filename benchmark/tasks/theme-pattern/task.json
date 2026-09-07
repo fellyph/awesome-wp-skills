@@ -1,0 +1,23 @@
+{
+  "id": "theme-pattern",
+  "category": "themes",
+  "kind": "theme",
+  "checks": [
+    {
+      "id": "registered",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "editable",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "content",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

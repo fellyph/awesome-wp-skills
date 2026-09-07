@@ -1,6 +1,6 @@
 # Check every Markdown document, including the hidden .github directory.
 hidden = true
-exclude_path = ['(^|/)(\.git|\.venv|node_modules)/']
+exclude_path = ['(^|/)(\.git|\.venv|node_modules|results)/', '(^|/)benchmark/(\.cache|skills)/']
 
 timeout = 30
 max_retries = 3

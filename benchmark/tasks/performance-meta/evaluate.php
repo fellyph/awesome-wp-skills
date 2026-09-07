@@ -1,0 +1,5 @@
+$ids=[];for($i=0;$i<12;$i++){$ids[]=wp_insert_post(['post_title'=>'Item '.$i,'post_status'=>'publish']);} wp_cache_flush(); global $wpdb;foreach($ids as $id)update_post_meta($id,'bench_rating','4');delete_post_meta($ids[0],'bench_rating');wp_cache_flush();$before=$wpdb->num_queries;$start=microtime(true);$r=bench_ratings($ids);$q=$wpdb->num_queries-$before;bench_measure('queries',$q);bench_measure('seconds',microtime(true)-$start);bench_check('values',count($r)===12 && $r[$ids[1]]==='4' && $r[$ids[0]]==='');bench_check('queries',$q<=2);bench_check('empty',bench_ratings([])===[]);
+
+$cold=[];$warm=[];$cold_q=[];$warm_q=[];
+for($sample=0;$sample<6;$sample++){wp_cache_flush();$q0=$wpdb->num_queries;$t=microtime(true);bench_ratings($ids);$c=microtime(true)-$t;$cq=$wpdb->num_queries-$q0;$q0=$wpdb->num_queries;$t=microtime(true);bench_ratings($ids);$w=microtime(true)-$t;$wq=$wpdb->num_queries-$q0;if($sample>0){$cold[]=$c;$warm[]=$w;$cold_q[]=$cq;$warm_q[]=$wq;}}
+bench_measure('cold_seconds_samples',$cold);bench_measure('warm_seconds_samples',$warm);bench_measure('cold_query_samples',$cold_q);bench_measure('warm_query_samples',$warm_q);

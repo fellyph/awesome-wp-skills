@@ -1,0 +1,2 @@
+Return a search form from bench_component(). Use input type search named s, accessible name Search, and a native submit button named Search. Ensure keyboard access and visibly usable contrast.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

@@ -1,0 +1,2 @@
+Optimize bench_published_count() to return the integer number of published posts. Ten successive calls should issue at most 2 SQL queries. The count must remain correct after publishing another post in the same request.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

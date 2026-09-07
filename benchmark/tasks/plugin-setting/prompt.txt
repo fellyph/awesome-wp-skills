@@ -1,0 +1,2 @@
+Register bench_label in settings group bench_group on admin_init, default empty string, sanitized as plain text using the Settings API.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

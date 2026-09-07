@@ -1,0 +1,2 @@
+Create an auto-registered filesystem block pattern with slug benchmark/cta, title Contact us, a heading Contact our team, and a button Contact linking to /contact/. Use the WordPress buttons/button blocks and editable content.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

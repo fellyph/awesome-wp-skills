@@ -1,0 +1,23 @@
+{
+  "id": "plugin-setting",
+  "category": "plugins",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "registered",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "sanitized",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "default",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

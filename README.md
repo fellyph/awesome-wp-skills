@@ -18,6 +18,7 @@ Great WordPress development draws on the wider web ecosystem. This list includes
 - [Testing and security skills](#testing-and-security-skills)
 - [MCP servers and integrations](#mcp-servers-and-integrations)
 - [Suggested combinations](#suggested-combinations)
+- [Model and skill benchmark](#model-and-skill-benchmark)
 - [Contributing](#contributing)
 
 ## Start here
@@ -133,6 +134,10 @@ These are starting points, not tested bundles. Select tools for the work at hand
 | Build a repeatable demo | wp-playground + blueprint + Playwright MCP |
 | Implement a design | Figma MCP + wpds or Frontend Design + Web Design Guidelines |
 | Write a post or landing page | no-ai-slop + SEO + Impeccable |
+
+## Model and skill benchmark
+
+The [benchmark framework](benchmark/README.md) compares individual skills and models across themes, plugins, fixes, performance, and accessibility using WordPress Playground in CI. It includes native API adapters and OpenRouter, a USD 20 per-model budget limit, and reproducible reports. Bundled runs are simulated validation; real-model results are not yet published.
 
 ## Contributing
 

@@ -1,0 +1,2 @@
+bench_limit() should return the configured integer bench_limit, including zero. Only a missing option should use default 10. Fix the regression without changing the function signature.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

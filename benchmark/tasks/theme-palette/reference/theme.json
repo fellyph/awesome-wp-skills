@@ -1,0 +1,1 @@
+{"version": 3, "settings": {"color": {"palette": [{"slug": "brand", "name": "Brand", "color": "#14532d"}]}, "layout": {"contentSize": "720px", "wideSize": "1200px"}}, "styles": {"elements": {"link": {"color": {"text": "var:preset|color|brand"}}}}}

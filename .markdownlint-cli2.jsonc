@@ -6,5 +6,5 @@
     // Compact tables are intentional; column padding adds translation churn.
     "MD060": false
   },
-  "ignores": [".venv/**", "node_modules/**"]
+  "ignores": [".venv/**", "node_modules/**", "results/**", "benchmark/.cache/**", "benchmark/skills/**"]
 }

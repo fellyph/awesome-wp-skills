@@ -1,0 +1,1 @@
+$a=wp_insert_post(['post_title'=>'Deal 50%','post_status'=>'publish']); $b=wp_insert_post(['post_title'=>'Deal 500','post_status'=>'publish']); bench_check('matches',in_array($a,bench_search('Deal'),true)); bench_check('literal',bench_search('50%')===[$a]); bench_check('injection',bench_search("' OR 1=1 -- ")===[]);

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "REPLACE_WITH_OPENROUTER_OPENAI_MODEL_ID",
+    "adapter": "openrouter",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://openrouter.ai/models",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    },
+    "provider": "REPLACE_WITH_PROVIDER_SLUG"
+  },
+  {
+    "id": "REPLACE_WITH_OPENROUTER_ANTHROPIC_MODEL_ID",
+    "adapter": "openrouter",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://openrouter.ai/models",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    },
+    "provider": "REPLACE_WITH_PROVIDER_SLUG"
+  },
+  {
+    "id": "REPLACE_WITH_OPENROUTER_KIMI_MODEL_ID",
+    "adapter": "openrouter",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://openrouter.ai/models",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    },
+    "provider": "REPLACE_WITH_PROVIDER_SLUG"
+  },
+  {
+    "id": "REPLACE_WITH_OPENROUTER_GLM_MODEL_ID",
+    "adapter": "openrouter",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://openrouter.ai/models",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    },
+    "provider": "REPLACE_WITH_PROVIDER_SLUG"
+  },
+  {
+    "id": "REPLACE_WITH_OPENROUTER_GEMINI_MODEL_ID",
+    "adapter": "openrouter",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://openrouter.ai/models",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    },
+    "provider": "REPLACE_WITH_PROVIDER_SLUG"
+  }
+]
