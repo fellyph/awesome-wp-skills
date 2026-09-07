@@ -131,7 +131,7 @@ Estas combinações são pontos de partida, não pacotes testados. Selecione as 
 
 ## Benchmark de modelos e skills
 
-O [framework de benchmark](benchmark/README.md) compara skills individuais e modelos nas categorias de temas, plugins, correções, performance e acessibilidade usando WordPress Playground no CI. Inclui adaptadores para APIs nativas e OpenRouter, limite de orçamento de US$ 20 por modelo e relatórios reproduzíveis. As rodadas incluídas são validações simuladas; os resultados com modelos reais ainda não foram publicados.
+O [framework de benchmark](benchmark/README.md) compara skills individuais e modelos nas categorias de temas, plugins, correções, performance e acessibilidade usando WordPress Playground no CI. Inclui adaptadores para APIs nativas e OpenRouter, limite de orçamento de US$ 20 por modelo e relatórios reproduzíveis. O primeiro [cenário prático](benchmark/LANDING-PAGE.md) entrega uma landing page de agência editável, com referência visual fixa, testes de edição, screenshots e avaliação visual humana sem identificar o modelo ou a skill. Os [snapshots publicados](benchmark/results/) mantêm o último resultado seguro de cada modelo, enquanto a saída bruta do benchmark permanece local e ignorada.
 
 ## Como contribuir
 
