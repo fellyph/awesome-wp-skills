@@ -13,6 +13,7 @@ Great WordPress development draws on the wider web ecosystem. This list includes
 - [Start here](#start-here)
 - [WordPress skills](#wordpress-skills)
 - [Design and frontend skills](#design-and-frontend-skills)
+- [Content and writing skills](#content-and-writing-skills)
 - [Accessibility, performance, and quality skills](#accessibility-performance-and-quality-skills)
 - [Testing and security skills](#testing-and-security-skills)
 - [MCP servers and integrations](#mcp-servers-and-integrations)
@@ -73,6 +74,10 @@ These skills come from the maintained [WordPress/agent-skills](https://github.co
 - [Frontend Design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) — **Anthropic.** Creates distinctive layouts and components that can inform custom themes and page sections.
 - [Web Design Guidelines](https://github.com/vercel-labs/agent-skills/blob/main/skills/web-design-guidelines/SKILL.md) — **Vercel.** Reviews interface code for accessible forms, focus states, motion, localization, and UX details.
 
+## Content and writing skills
+
+- [no-ai-slop](https://github.com/petergyang/no-ai-slop/blob/main/skills/no-ai-slop/SKILL.md) — **Peter Yang.** Edits drafts to remove repetitive AI writing patterns while keeping the author's voice, or flags the patterns without rewriting. Useful for post, page, and interface copy. Instructions and examples are in English; it is not an AI-authorship detector.
+
 ## Accessibility, performance, and quality skills
 
 The web-quality skills below are maintained by **Addy Osmani** as an [unofficial, stack-agnostic collection](https://github.com/addyosmani/web-quality-skills), not a Google product.
@@ -127,6 +132,7 @@ These are starting points, not tested bundles. Select tools for the work at hand
 | Work with Elementor | Elementor MCP (beta) or EMCP Tools + Accessibility + Performance |
 | Build a repeatable demo | wp-playground + blueprint + Playwright MCP |
 | Implement a design | Figma MCP + wpds or Frontend Design + Web Design Guidelines |
+| Write a post or landing page | no-ai-slop + SEO + Impeccable |
 
 ## Contributing
 

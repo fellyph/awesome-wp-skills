@@ -13,6 +13,7 @@ Um bom desenvolvimento com WordPress aproveita todo o ecossistema da web. Esta l
 - [Comece aqui](#comece-aqui)
 - [Skills de WordPress](#skills-de-wordpress)
 - [Skills de design e frontend](#skills-de-design-e-frontend)
+- [Skills de conteúdo e redação](#skills-de-conteúdo-e-redação)
 - [Skills de acessibilidade, desempenho e qualidade](#skills-de-acessibilidade-desempenho-e-qualidade)
 - [Skills de testes e segurança](#skills-de-testes-e-segurança)
 - [Servidores e integrações MCP](#servidores-e-integrações-mcp)
@@ -73,6 +74,10 @@ Estas skills fazem parte da coleção [WordPress/agent-skills](https://github.co
 - [Frontend Design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) — **Anthropic.** Cria layouts e componentes com identidade própria que podem orientar temas personalizados e seções de páginas.
 - [Web Design Guidelines](https://github.com/vercel-labs/agent-skills/blob/main/skills/web-design-guidelines/SKILL.md) — **Vercel.** Revisa o código de interfaces quanto a formulários acessíveis, estados de foco, movimento, localização e detalhes de experiência do usuário.
 
+## Skills de conteúdo e redação
+
+- [no-ai-slop](https://github.com/petergyang/no-ai-slop/blob/main/skills/no-ai-slop/SKILL.md) — **Peter Yang.** Edita rascunhos para remover padrões repetitivos de escrita gerada por IA sem perder a voz de quem escreve, ou aponta os padrões sem reescrever. Útil para textos de posts, páginas e interfaces. As instruções e os exemplos estão em inglês; não é um detector de autoria por IA.
+
 ## Skills de acessibilidade, desempenho e qualidade
 
 As skills de qualidade web abaixo são mantidas por **Addy Osmani** como uma [coleção não oficial e independente de tecnologias](https://github.com/addyosmani/web-quality-skills), não como um produto do Google.
@@ -127,6 +132,7 @@ Estas combinações são pontos de partida, não pacotes testados. Selecione as 
 | Trabalhar com Elementor | Elementor MCP (beta) ou EMCP Tools + Accessibility + Performance |
 | Criar uma demonstração reproduzível | wp-playground + blueprint + Playwright MCP |
 | Implementar um design | Figma MCP + wpds ou Frontend Design + Web Design Guidelines |
+| Escrever um post ou página de destino | no-ai-slop + SEO + Impeccable |
 
 ## Como contribuir
 

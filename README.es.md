@@ -13,6 +13,7 @@ El buen desarrollo con WordPress también se nutre del ecosistema web. Esta list
 - [Empieza aquí](#empieza-aquí)
 - [Habilidades de WordPress](#habilidades-de-wordpress)
 - [Habilidades de diseño y frontend](#habilidades-de-diseño-y-frontend)
+- [Habilidades de contenido y redacción](#habilidades-de-contenido-y-redacción)
 - [Habilidades de accesibilidad, rendimiento y calidad](#habilidades-de-accesibilidad-rendimiento-y-calidad)
 - [Habilidades de pruebas y seguridad](#habilidades-de-pruebas-y-seguridad)
 - [Servidores e integraciones MCP](#servidores-e-integraciones-mcp)
@@ -73,6 +74,10 @@ Estas habilidades proceden de la colección [WordPress/agent-skills](https://git
 - [Frontend Design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) — **Anthropic.** Crea composiciones y componentes con identidad propia que pueden servir de base para temas personalizados y secciones de páginas.
 - [Web Design Guidelines](https://github.com/vercel-labs/agent-skills/blob/main/skills/web-design-guidelines/SKILL.md) — **Vercel.** Revisa el código de interfaces para mejorar formularios accesibles, estados de foco, movimiento, localización y detalles de experiencia de usuario.
 
+## Habilidades de contenido y redacción
+
+- [no-ai-slop](https://github.com/petergyang/no-ai-slop/blob/main/skills/no-ai-slop/SKILL.md) — **Peter Yang.** Edita borradores para eliminar patrones repetitivos de escritura generada por IA sin perder la voz de quien escribe, o señala los patrones sin reescribir. Útil para textos de entradas, páginas e interfaces. Las instrucciones y los ejemplos están en inglés; no es un detector de autoría por IA.
+
 ## Habilidades de accesibilidad, rendimiento y calidad
 
 Las siguientes habilidades de calidad web son mantenidas por **Addy Osmani** como una [colección no oficial e independiente de la tecnología utilizada](https://github.com/addyosmani/web-quality-skills), no como un producto de Google.
@@ -127,6 +132,7 @@ Son puntos de partida, no paquetes probados. Selecciona las herramientas según 
 | Trabajar con Elementor | Elementor MCP (beta) o EMCP Tools + Accessibility + Performance |
 | Crear una demo reproducible | wp-playground + blueprint + Playwright MCP |
 | Implementar un diseño | Figma MCP + wpds o Frontend Design + Web Design Guidelines |
+| Redactar una entrada o página de destino | no-ai-slop + SEO + Impeccable |
 
 ## Cómo contribuir
 

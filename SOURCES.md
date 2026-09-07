@@ -4,7 +4,7 @@ Initial documentation review: **2026-09-05**.
 
 ## Scope and method
 
-The catalog currently lists 28 agent skills and 8 MCP integrations. Research was split across WordPress skills, general web skills, and MCP/site-builder integrations, then consolidated into the three READMEs.
+The catalog currently lists 29 agent skills and 8 MCP integrations. Research was split across WordPress skills, general web skills, and MCP/site-builder integrations, then consolidated into the three READMEs.
 
 Entries were selected from maintainer-controlled repositories and product documentation. Individual skill instructions were inspected, along with installation notes and relevant migration notices. The WordPress use cases and suggested combinations are editorial assessments of documented capabilities.
 
@@ -22,6 +22,7 @@ The README entry links are the primary evidence for each description. These coll
 | [Chrome DevTools skills](https://github.com/ChromeDevTools/chrome-devtools-mcp) | Accessibility debugging instructions (a11y-debugging) using the accessibility tree, Lighthouse, and Chrome DevTools MCP. |
 | [Anthropic skills](https://github.com/anthropics/skills) | Frontend design and Python Playwright web application testing instructions. |
 | [Vercel agent-skills](https://github.com/vercel-labs/agent-skills) | Web design guidelines skill file. The collection's React guidance was reviewed and excluded; see below. |
+| [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop) | Skill file, its eval checklist, README, and MIT license, reviewed on 2026-09-07. Community project by Peter Yang, also distributed as a ChatGPT/Codex plugin. Suggested by Rafael M. Ehlers in comments on the maintainer's post and evaluated in [issue #3](https://github.com/fellyph/awesome-wp-skills/issues/3). Instructions, banned-word list, and examples are in English; behavior on Portuguese or Spanish text was not assessed. The skill names patterns and does not claim to detect AI authorship. |
 | [Cloudflare security-audit-skill](https://github.com/cloudflare/security-audit-skill) | Actual skill, independent validation workflow, subagent support, and Node.js requirements. |
 | [Skills CLI](https://github.com/vercel-labs/skills) | Documented installation syntax; commands in the READMEs were not executed. |
 
