@@ -1,0 +1,23 @@
+{
+  "id": "fix-admin-notice",
+  "category": "fixes",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "text",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "escaped",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "return_only",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

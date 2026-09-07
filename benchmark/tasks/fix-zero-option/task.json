@@ -1,0 +1,23 @@
+{
+  "id": "fix-zero-option",
+  "category": "fixes",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "missing",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "zero",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "configured",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

@@ -1,0 +1,2 @@
+bench_search($title) must return published post IDs whose titles contain the literal supplied string. Treat SQL metacharacters and LIKE wildcards as literal input. Return IDs in ascending order.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

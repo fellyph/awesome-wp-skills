@@ -1,0 +1,23 @@
+{
+  "id": "theme-single",
+  "category": "themes",
+  "kind": "theme",
+  "checks": [
+    {
+      "id": "blocks",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "main",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "discoverable",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

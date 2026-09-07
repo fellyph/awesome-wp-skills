@@ -1,0 +1,246 @@
+{
+  "wp-block-themes": {
+    "source": "https://github.com/WordPress/agent-skills/tree/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes",
+    "revision": "d87ee6916e740c7960b6959220c0481a41b320c7",
+    "path": ".cache/skills/wp-block-themes",
+    "sha256": "c5049d6864442bc8b0bfa75633bfb5147db4e7bd6bc24d9d07dcecfe9816a202",
+    "resources": {
+      "SKILL.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes/SKILL.md",
+        "sha256": "ae92ea0d67010c0e68a798dfd9ca8d196e66fa9602414bfa7fcca00dc1a95fa5"
+      },
+      "references/creating-new-block-theme.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes/references/creating-new-block-theme.md",
+        "sha256": "3dcb5bb2ed6c1298b9bb26e3f665f7c3ebebe69e94810a0a0a065fa8a054b774"
+      },
+      "references/debugging.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes/references/debugging.md",
+        "sha256": "a1387e6e34220613ae1292a6d86b5c2f4479f443392037ff6977aa68cf9c8239"
+      },
+      "references/patterns.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes/references/patterns.md",
+        "sha256": "43a2f184a42a80d4784cb0ce064339aead8d411c18827f7d958b247d633453a4"
+      },
+      "references/style-variations.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes/references/style-variations.md",
+        "sha256": "6f50b6055d3da1dd89543bbafcef2b726756c1901bedf55574f7f5bc1cbd208d"
+      },
+      "references/templates-and-parts.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes/references/templates-and-parts.md",
+        "sha256": "05e9491404e434fe66711d4fcb63ceddb52385365ccb5a5c8ce9b7020a859edc"
+      },
+      "references/theme-json.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes/references/theme-json.md",
+        "sha256": "27c8a68465aa3fdf23cdb411242323ee930149048ed3e524ee1584a92e170fa1"
+      },
+      "scripts/detect_block_themes.mjs": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-block-themes/scripts/detect_block_themes.mjs",
+        "sha256": "63bfa8dfbb6d71f615ff62581dec4f361a9da8e11b99ea6faf6c2d9d8c79d13f"
+      },
+      "UPSTREAM-LICENSE": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/LICENSE",
+        "sha256": "e32a315ba45df64329783a922f7bf457064b7a8fa1f46c1bda55a95850d5377c"
+      }
+    },
+    "tasks": [
+      "theme-single",
+      "theme-pattern",
+      "theme-palette"
+    ]
+  },
+  "wp-plugin-development": {
+    "source": "https://github.com/WordPress/agent-skills/tree/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development",
+    "revision": "d87ee6916e740c7960b6959220c0481a41b320c7",
+    "path": ".cache/skills/wp-plugin-development",
+    "sha256": "8b4c673eb0a2fb13b5bf98d996cd6a085a5682b807de3a17859e47c9c6d4faa3",
+    "resources": {
+      "SKILL.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development/SKILL.md",
+        "sha256": "a9b8af653897ac150e52de1430ad0c51cefe19553ac932c48cfc54639270c5bc"
+      },
+      "references/data-and-cron.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development/references/data-and-cron.md",
+        "sha256": "6a21d6a919b536ca8c748649450031ec71b7606845cabb089540dddb0313626f"
+      },
+      "references/debugging.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development/references/debugging.md",
+        "sha256": "045e6cfe9bfc77ddec277d4ce9b2ca3e90d3047281dbe4a58f18b4406c59cb6f"
+      },
+      "references/lifecycle.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development/references/lifecycle.md",
+        "sha256": "231fb911cff2402b6701591a10e202e86cef0c4ea4d7053168fdd7ba02d0a91e"
+      },
+      "references/security.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development/references/security.md",
+        "sha256": "95c92315721242f3ad55eec47518acb3ed833fd9c751adb84cfe45642307cb1b"
+      },
+      "references/settings-api.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development/references/settings-api.md",
+        "sha256": "535fde7f0194f6f14e999d6d691f3e9b696d0da2425fa737254628c9c5d20ceb"
+      },
+      "references/structure.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development/references/structure.md",
+        "sha256": "00ae05f608a594e7be557d41aa8bf3b9240a4ce84986cbf11ab7a419f48fdb03"
+      },
+      "scripts/detect_plugins.mjs": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-plugin-development/scripts/detect_plugins.mjs",
+        "sha256": "3fe7315c575699e25aea56ad7b2a09f424892a6cfcaba8fbe196617b85844354"
+      },
+      "UPSTREAM-LICENSE": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/LICENSE",
+        "sha256": "e32a315ba45df64329783a922f7bf457064b7a8fa1f46c1bda55a95850d5377c"
+      }
+    },
+    "tasks": [
+      "plugin-rest",
+      "fix-zero-option",
+      "fix-admin-notice",
+      "plugin-setting",
+      "fix-search",
+      "plugin-shortcode"
+    ]
+  },
+  "wp-performance": {
+    "source": "https://github.com/WordPress/agent-skills/tree/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance",
+    "revision": "d87ee6916e740c7960b6959220c0481a41b320c7",
+    "path": ".cache/skills/wp-performance",
+    "sha256": "99cbdf7c023effbc4af742ed5373e7888295aa0a771b5443294dd80aa03062dc",
+    "resources": {
+      "SKILL.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/SKILL.md",
+        "sha256": "a566ed5925e2ca0334650af751cf09fb9854e8554c6456306d7061c1200e4419"
+      },
+      "references/autoload-options.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/autoload-options.md",
+        "sha256": "42d8465c18f87d2676281ce09534562d7f8f4a4c39342fab012c1b391458fbc8"
+      },
+      "references/cron.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/cron.md",
+        "sha256": "54c56935bfd4845515df28c8d6ea801aedd2d5710980ba2f0c3829bf61bd74ff"
+      },
+      "references/database.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/database.md",
+        "sha256": "ffc6dc561228f2967f939ff4052711103a010f6c60bca442621ad94a051125de"
+      },
+      "references/http-api.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/http-api.md",
+        "sha256": "bb6a36c4e8287ea589e9c9571822729d6f005ccb1268a7212b21a346cbb22ba3"
+      },
+      "references/measurement.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/measurement.md",
+        "sha256": "906d0a8501b11cffc6bb86fd333bc7e96245124fbcc16a8d398e52ed7059b37e"
+      },
+      "references/object-cache.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/object-cache.md",
+        "sha256": "9ee1ffc154564645b60772c1994a7080e376fbebc461ce5e277d92f1c7af8d2a"
+      },
+      "references/query-monitor-headless.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/query-monitor-headless.md",
+        "sha256": "4985fc2eccfefd3c3e12531972d0a76813b2d8f1935203a1003b4ff2ecb317d1"
+      },
+      "references/server-timing.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/server-timing.md",
+        "sha256": "a0f4886d5842cae8b36ff8b801c210fda760f8cb5c0eb958ca11035f499ae341"
+      },
+      "references/wp-cli-doctor.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/wp-cli-doctor.md",
+        "sha256": "0fa33e780f97d246a4db30092bd480ce7487a20d5fe1a558c0068cd822473b77"
+      },
+      "references/wp-cli-profile.md": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/references/wp-cli-profile.md",
+        "sha256": "74f51a3caccde9a2deef9071bef0c70735868bff8a5e51cf9737308cdf59eac6"
+      },
+      "scripts/perf_inspect.mjs": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/skills/wp-performance/scripts/perf_inspect.mjs",
+        "sha256": "5031a0ce0b81074cbf0fb69be5a60b8031de78f33fe2d6325c0d022165d6b688"
+      },
+      "UPSTREAM-LICENSE": {
+        "url": "https://raw.githubusercontent.com/WordPress/agent-skills/d87ee6916e740c7960b6959220c0481a41b320c7/LICENSE",
+        "sha256": "e32a315ba45df64329783a922f7bf457064b7a8fa1f46c1bda55a95850d5377c"
+      }
+    },
+    "tasks": [
+      "performance-titles",
+      "performance-count",
+      "performance-meta"
+    ]
+  },
+  "accessibility": {
+    "source": "https://github.com/addyosmani/web-quality-skills/tree/afa8da942115f2961fdbfa80807ea0b232ff6c00/skills/accessibility",
+    "revision": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+    "path": ".cache/skills/accessibility",
+    "sha256": "85966d7da23237e8d53059db4ab9a9bee0cdd8e206dbf91286cfb9cf26b3e737",
+    "resources": {
+      "SKILL.md": {
+        "url": "https://raw.githubusercontent.com/addyosmani/web-quality-skills/afa8da942115f2961fdbfa80807ea0b232ff6c00/skills/accessibility/SKILL.md",
+        "sha256": "267fb2a0707d6142f2871f22688203a42ba21291a2aa200fb740936e41362b5d"
+      },
+      "references/A11Y-PATTERNS.md": {
+        "url": "https://raw.githubusercontent.com/addyosmani/web-quality-skills/afa8da942115f2961fdbfa80807ea0b232ff6c00/skills/accessibility/references/A11Y-PATTERNS.md",
+        "sha256": "f10e238dd4dd3c4f51134c2056bc02d3dd4f8fb6ccc9145c2c1ba7aab4d58140"
+      },
+      "references/WCAG.md": {
+        "url": "https://raw.githubusercontent.com/addyosmani/web-quality-skills/afa8da942115f2961fdbfa80807ea0b232ff6c00/skills/accessibility/references/WCAG.md",
+        "sha256": "16683e025e3833d931c9d880645d98a448827f97e10189b6c8f12c832e7a2361"
+      },
+      "UPSTREAM-LICENSE": {
+        "url": "https://raw.githubusercontent.com/addyosmani/web-quality-skills/afa8da942115f2961fdbfa80807ea0b232ff6c00/LICENSE",
+        "sha256": "c122223ac43e86421958e18623979942c21b642951e2e3736dcb63eff13587c3"
+      }
+    },
+    "tasks": [
+      "accessibility-disclosure",
+      "accessibility-image",
+      "accessibility-form"
+    ]
+  },
+  "frontend-design": {
+    "source": "https://github.com/anthropics/skills/tree/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f/skills/frontend-design",
+    "revision": "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+    "path": ".cache/skills/frontend-design",
+    "sha256": "4b617655acc822cb388e9467b25a1133071dc21e9dbe7b72b26aeb9f504071bd",
+    "resources": {
+      "LICENSE.txt": {
+        "url": "https://raw.githubusercontent.com/anthropics/skills/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f/skills/frontend-design/LICENSE.txt",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "SKILL.md": {
+        "url": "https://raw.githubusercontent.com/anthropics/skills/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f/skills/frontend-design/SKILL.md",
+        "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+      }
+    },
+    "tasks": [
+      "accessibility-disclosure",
+      "theme-single",
+      "theme-pattern",
+      "theme-palette",
+      "accessibility-image",
+      "accessibility-form"
+    ]
+  },
+  "best-practices": {
+    "source": "https://github.com/addyosmani/web-quality-skills/tree/afa8da942115f2961fdbfa80807ea0b232ff6c00/skills/best-practices",
+    "revision": "afa8da942115f2961fdbfa80807ea0b232ff6c00",
+    "path": ".cache/skills/best-practices",
+    "sha256": "d0662aff87f3a64f408a9d06f9ac80f9682b3bacd314805b98b0cd60f59b8004",
+    "resources": {
+      "UPSTREAM-LICENSE": {
+        "url": "https://raw.githubusercontent.com/addyosmani/web-quality-skills/afa8da942115f2961fdbfa80807ea0b232ff6c00/LICENSE",
+        "sha256": "c122223ac43e86421958e18623979942c21b642951e2e3736dcb63eff13587c3"
+      },
+      "SKILL.md": {
+        "url": "https://raw.githubusercontent.com/addyosmani/web-quality-skills/afa8da942115f2961fdbfa80807ea0b232ff6c00/skills/best-practices/SKILL.md",
+        "sha256": "9d1f10a08cd7a94176ce160ec860dbd3ecfadad75d46546001883f1f907c5c3e"
+      },
+      "references/SECURITY.md": {
+        "url": "https://raw.githubusercontent.com/addyosmani/web-quality-skills/afa8da942115f2961fdbfa80807ea0b232ff6c00/skills/best-practices/references/SECURITY.md",
+        "sha256": "af021e5db37e921c79b8807d63e1cfc02dcf63614d2806cfba04ba44a1366178"
+      }
+    },
+    "tasks": [
+      "fix-search",
+      "fix-admin-notice",
+      "plugin-rest"
+    ]
+  }
+}

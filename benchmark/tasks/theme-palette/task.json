@@ -1,0 +1,23 @@
+{
+  "id": "theme-palette",
+  "category": "themes",
+  "kind": "theme",
+  "checks": [
+    {
+      "id": "palette",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "layout",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "link",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

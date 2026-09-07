@@ -1,0 +1,2 @@
+Optimize bench_ratings($ids), returning a map of each post ID to its bench_rating meta value. For 12 posts with cold cache use at most 2 SQL queries, preserve empty strings for missing metadata, and handle an empty input.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

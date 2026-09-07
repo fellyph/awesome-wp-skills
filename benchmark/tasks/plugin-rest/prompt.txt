@@ -1,0 +1,2 @@
+Create GET /bench/v1/status returning {"ready":true}. Require manage_options capability. Anonymous users and subscribers must be denied; administrators allowed.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

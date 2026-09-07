@@ -1,0 +1,2 @@
+Return a linked product image from bench_component(): link to /product/, visible product image with descriptive alt text Blue cotton shirt, and keyboard-visible focus. Use the supplied inline SVG data URL; do not fetch external assets.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

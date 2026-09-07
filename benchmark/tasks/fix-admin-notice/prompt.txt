@@ -1,0 +1,2 @@
+bench_notice($message) currently allows HTML injection. Return a WordPress admin notice div containing a paragraph with the message as text. Preserve punctuation and do not emit output directly.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

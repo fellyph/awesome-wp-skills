@@ -1,0 +1,96 @@
+name: Benchmark validation
+
+on:
+  pull_request:
+    paths: ['benchmark/**', 'package.json', 'package-lock.json', '.github/workflows/benchmark.yml']
+  push:
+    branches: [main]
+    paths: ['benchmark/**', 'package.json', 'package-lock.json', '.github/workflows/benchmark.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: benchmark-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  protocol:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12.10'
+      - run: npm ci --ignore-scripts
+      - run: python -m benchmark sync-skills
+      - run: python -m benchmark validate
+      - run: python -m unittest discover -s benchmark/tests -v
+
+  playground:
+    needs: protocol
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        category: [themes, plugins, fixes, performance, accessibility]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12.10'
+      - run: npm ci --ignore-scripts
+      - if: matrix.category == 'accessibility'
+        run: npx playwright install --with-deps chromium
+      - name: Validate good and bad solutions in real WordPress
+        env:
+          CATEGORY: ${{ matrix.category }}
+        run: python -m benchmark verify-fixtures --category "$CATEGORY" --output results/fixtures
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: fixtures-${{ matrix.category }}
+          path: results/fixtures/
+          retention-days: 14
+
+  pilot:
+    needs: protocol
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12.10'
+      - run: npm ci --ignore-scripts
+      - run: python -m benchmark sync-skills
+      - run: python -m benchmark run --config benchmark/configs/pilot.json --output results/pilot
+      - name: Resume completed pilot without repeating executions
+        run: python -m benchmark run --config benchmark/configs/pilot.json --output results/pilot
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: simulated-pilot
+          path: results/pilot/
+          retention-days: 14

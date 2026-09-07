@@ -1,0 +1,23 @@
+{
+  "id": "performance-meta",
+  "category": "performance",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "values",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "queries",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "empty",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

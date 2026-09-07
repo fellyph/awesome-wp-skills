@@ -1,0 +1,2 @@
+Implement shortcode [bench_greeting name="..."] that returns a span containing Hello, followed by the name (default Visitor). Escape untrusted names, and return rather than echo the result.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

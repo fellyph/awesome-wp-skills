@@ -1,0 +1,11 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "6.9"
+  },
+  "features": {
+    "networking": false
+  },
+  "steps": []
+}

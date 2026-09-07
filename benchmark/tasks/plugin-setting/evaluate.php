@@ -1,0 +1,1 @@
+do_action('admin_init'); $s=get_registered_settings(); bench_check('registered', isset($s['bench_label']) && $s['bench_label']['group']==='bench_group'); update_option('bench_label', '<b>Hello</b>'); bench_check('sanitized',get_option('bench_label')==='Hello'); delete_option('bench_label'); bench_check('default',get_option('bench_label')==='');

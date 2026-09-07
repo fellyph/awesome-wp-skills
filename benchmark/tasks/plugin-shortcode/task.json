@@ -1,0 +1,23 @@
+{
+  "id": "plugin-shortcode",
+  "category": "plugins",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "default",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "returns",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "escaped",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

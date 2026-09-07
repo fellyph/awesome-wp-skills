@@ -1,0 +1,21 @@
+{
+  "name": "awesome-wp-skills-benchmark",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "scripts": {
+    "benchmark:validate": "python3 -m benchmark validate",
+    "benchmark:test": "python3 -m unittest discover -s benchmark/tests -v",
+    "benchmark:fixtures": "python3 -m benchmark verify-fixtures"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@wp-playground/cli": "3.1.52"
+  },
+  "overrides": {
+    "qs": "6.16.0"
+  }
+}

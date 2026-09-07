@@ -17,6 +17,7 @@ El buen desarrollo con WordPress también se nutre del ecosistema web. Esta list
 - [Habilidades de pruebas y seguridad](#habilidades-de-pruebas-y-seguridad)
 - [Servidores e integraciones MCP](#servidores-e-integraciones-mcp)
 - [Combinaciones sugeridas](#combinaciones-sugeridas)
+- [Benchmark de modelos y skills](#benchmark-de-modelos-y-skills)
 - [Cómo contribuir](#cómo-contribuir)
 
 ## Empieza aquí
@@ -127,6 +128,10 @@ Son puntos de partida, no paquetes probados. Selecciona las herramientas según 
 | Trabajar con Elementor | Elementor MCP (beta) o EMCP Tools + Accessibility + Performance |
 | Crear una demo reproducible | wp-playground + blueprint + Playwright MCP |
 | Implementar un diseño | Figma MCP + wpds o Frontend Design + Web Design Guidelines |
+
+## Benchmark de modelos y skills
+
+El [framework de benchmark](benchmark/README.md) compara skills individuales y modelos en las categorías de temas, plugins, correcciones, rendimiento y accesibilidad usando WordPress Playground en CI. Incluye adaptadores para API nativas y OpenRouter, un límite de presupuesto de 20 USD por modelo e informes reproducibles. Las rondas incluidas son validaciones simuladas; los resultados con modelos reales todavía no se han publicado.
 
 ## Cómo contribuir
 

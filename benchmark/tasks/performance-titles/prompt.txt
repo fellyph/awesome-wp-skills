@@ -1,0 +1,2 @@
+Optimize bench_titles($ids) to return published post titles in input order, skipping missing IDs. Avoid one database query per ID: after a cold cache, 12 IDs must require at most 3 SQL queries. Preserve duplicates in the input.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

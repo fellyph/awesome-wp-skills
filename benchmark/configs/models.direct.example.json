@@ -1,0 +1,62 @@
+[
+  {
+    "id": "REPLACE_WITH_OPENAI_MODEL_ID",
+    "adapter": "openai",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    }
+  },
+  {
+    "id": "REPLACE_WITH_ANTHROPIC_MODEL_ID",
+    "adapter": "anthropic",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    }
+  },
+  {
+    "id": "REPLACE_WITH_KIMI_MODEL_ID",
+    "adapter": "kimi",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://platform.moonshot.ai/docs/pricing/chat",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    }
+  },
+  {
+    "id": "REPLACE_WITH_GLM_MODEL_ID",
+    "adapter": "glm",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    }
+  },
+  {
+    "id": "REPLACE_WITH_GEMINI_MODEL_ID",
+    "adapter": "gemini",
+    "parameters": {},
+    "pricing": {
+      "input_per_million_usd": null,
+      "output_per_million_usd": null,
+      "cached_input_per_million_usd": null,
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_on": "REPLACE_WITH_REVIEW_DATE"
+    }
+  }
+]

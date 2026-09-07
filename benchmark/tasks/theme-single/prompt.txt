@@ -1,0 +1,2 @@
+Implement templates/single.html as an editable block template with post title in an h1, featured image and post content. The content block must be inside a main landmark.
+Modify the provided files. Preserve the public function names and return types. WordPress 6.9 / PHP 8.3.

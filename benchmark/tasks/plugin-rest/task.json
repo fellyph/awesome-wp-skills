@@ -1,0 +1,23 @@
+{
+  "id": "plugin-rest",
+  "category": "plugins",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "anonymous_denied",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "subscriber_denied",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "admin_allowed",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}

@@ -51,3 +51,9 @@ The README entry links are the primary evidence for each description. These coll
 English is the source edition. The Spanish and Brazilian Portuguese editions preserve the catalog, source links, setup examples, and limitations.
 
 The Brazilian Portuguese review consulted the [WordPress glossary](https://translate.wordpress.org/locale/pt-br/default/glossary/) and [translation best practices](https://br.wordpress.org/team/handbook/traducao/boas-praticas/). Product and skill names stay unchanged. The glossary confirms “bloco” and “editor de blocos”; “acessibilidade” and “padrões” are contextual translations where the consulted glossary did not return matching entries.
+
+## Benchmark implementation (September 7, 2026)
+
+The [benchmark framework](benchmark/README.md) evaluates 15 focused WordPress tasks with individually applied skills. Upstream skill commits and file hashes are recorded in its lockfile; downloaded resources stay in an ignored cache. This does not change the catalog's documentation-only verification status.
+
+Native adapters cover OpenAI, Anthropic, Gemini, Kimi and GLM, with optional OpenRouter routing. API sources and runtime limitations are documented in the benchmark guide. Provider formats and cost calculations are tested using simulated responses; no real-model quality, availability or billing results are claimed. Playground fixture tests verify reference and faulty solutions, not model performance. The initial files-only tool profile cannot run bundled skill scripts or other agents.

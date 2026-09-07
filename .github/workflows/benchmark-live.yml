@@ -1,0 +1,87 @@
+name: Benchmark live models
+
+on:
+  workflow_dispatch:
+    inputs:
+      config:
+        description: Reviewed, committed round JSON under benchmark/configs/
+        type: string
+        required: true
+      resume_run_id:
+        description: Previous workflow run ID whose benchmark-live artifact should be resumed
+        type: string
+        required: false
+
+permissions:
+  contents: read
+  actions: read
+
+# A resumed artifact must never be used by concurrent billable jobs.
+concurrency:
+  group: benchmark-live
+  cancel-in-progress: false
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12.10'
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - run: python -m benchmark sync-skills
+      - name: Validate selected configuration
+        env:
+          ROUND_CONFIG: ${{ inputs.config }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from benchmark.core import load_round
+          root = Path('benchmark/configs').resolve()
+          selected = Path(os.environ['ROUND_CONFIG']).resolve()
+          if not selected.is_relative_to(root) or selected.suffix != '.json':
+              raise SystemExit('Select a JSON file inside benchmark/configs/')
+          config = load_round(selected)
+          if any(m['adapter'] == 'mock' for m in config['models']):
+              raise SystemExit('Live workflow requires a reviewed configuration with real models')
+          PY
+          python -m benchmark plan --config "$ROUND_CONFIG"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        if: inputs.resume_run_id != ''
+        with:
+          name: benchmark-live
+          path: results/live/
+          run-id: ${{ inputs.resume_run_id }}
+          github-token: ${{ github.token }}
+      - name: Run or resume models within configured budgets
+        env:
+          ROUND_CONFIG: ${{ inputs.config }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python -m benchmark run --config "$ROUND_CONFIG" --output results/live --live
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: benchmark-live
+          path: results/live/
+          retention-days: 30
+      - name: Publish job summary
+        if: always()
+        run: |
+          if test -f results/live/report.md; then
+            cat results/live/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi

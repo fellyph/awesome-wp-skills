@@ -1,0 +1,1 @@
+delete_option('bench_limit'); bench_check('missing',bench_limit()===10); update_option('bench_limit',0); bench_check('zero',bench_limit()===0); update_option('bench_limit','7'); bench_check('configured',bench_limit()===7);

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "seed": 1729,
+  "repetitions": 3,
+  "tasks": [
+    "plugin-rest",
+    "plugin-setting",
+    "plugin-shortcode"
+  ],
+  "skills": [
+    "wp-block-themes",
+    "wp-plugin-development",
+    "wp-performance",
+    "accessibility",
+    "frontend-design",
+    "best-practices"
+  ],
+  "models": [
+    {
+      "id": "mock/reference",
+      "adapter": "mock",
+      "behavior": "reference"
+    },
+    {
+      "id": "mock/initial",
+      "adapter": "mock",
+      "behavior": "initial"
+    }
+  ],
+  "limits": {
+    "timeout_seconds": 300,
+    "max_calls": 16,
+    "max_output_tokens": 4096,
+    "max_total_tokens": 250000,
+    "max_run_usd": 1,
+    "max_round_usd": 36,
+    "max_model_usd": 20
+  }
+}

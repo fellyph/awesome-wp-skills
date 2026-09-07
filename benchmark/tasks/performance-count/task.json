@@ -1,0 +1,23 @@
+{
+  "id": "performance-count",
+  "category": "performance",
+  "kind": "plugin",
+  "checks": [
+    {
+      "id": "values",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "queries",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "invalidation",
+      "weight": 1,
+      "critical": true
+    }
+  ],
+  "browser": null
+}
