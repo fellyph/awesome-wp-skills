@@ -39,6 +39,10 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npx playwright install --with-deps chromium
       - run: python -m benchmark sync-skills
+      - name: Restore shared model allowance across CI rounds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -m benchmark.ci_budget
       - name: Validate selected configuration
         env:
           ROUND_CONFIG: ${{ inputs.config }}
@@ -63,10 +67,6 @@ jobs:
           path: results/live/
           run-id: ${{ inputs.resume_run_id }}
           github-token: ${{ github.token }}
-      - name: Restore shared model allowance across CI rounds
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python -m benchmark.ci_budget
       - name: Run or resume models within configured budgets
         env:
           ROUND_CONFIG: ${{ inputs.config }}

@@ -61,7 +61,7 @@ def project_report(directory, manifest, rows):
             return '<div class="compare '+('mobile' if viewport=='mobile' else '')+'">'+''.join(
                 f'<figure><figcaption>{caption} · {viewport}</figcaption><div class="viewport"><img alt="{caption} {viewport}" src="{src}"></div><a href="{src}">Open full screenshot</a></figure>'
                 for caption,src in [('Reference',f'reference-{viewport}.png'),('Submitted',f'{blind_id}-{viewport}.png')])+'</div>'
-        images=comparison('desktop')+'<details><summary>Compare mobile layouts</summary>'+comparison('mobile')+'</details>' 
+        images=comparison('desktop')+'<details><summary>Compare mobile layouts</summary>'+comparison('mobile')+'</details>'
         notice='<p><strong>Simulated reference fixture — validates the harness, not model or skill quality.</strong></p>' if row['simulated'] else ''
         blind.append('<section><h2>'+esc(blind_id)+'</h2>'+notice+images+'</section>')
         template[blind_id]={'reviewer':'','scores':dict.fromkeys(DIMENSIONS,None),'notes':''}

@@ -54,7 +54,7 @@ can inspect screenshots returned by tools as native provider image inputs.
 Gemini `countTokens` receives the actual outgoing `generateContentRequest`,
 including system instructions, tools, images and replayed thought signatures.
 Counts are not inferred from duplicated internal message representations.
-Reservations use configured rates and maximum output before dispatch. Context,
+Reservations use configured rates and maximum output before dispatch; when a turn's full `max_output_tokens` reservation would exceed the remaining per-run monetary cap, the runner clamps `max_output_tokens` for that call down to the affordable output budget (when at least 1,024 tokens remain affordable) before stopping with `monetary_limit`. Context,
 cumulative-token, monetary, output-truncation, provider, preflight and tool
 failures have distinct statuses. Unknown billing remains reserved; requests
 are never automatically retried. `submit` freezes all file/tool actions and
