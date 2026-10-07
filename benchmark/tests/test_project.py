@@ -177,5 +177,41 @@ class AdditionalAccountingTests(unittest.TestCase):
             self.assertNotIn('private-model-identity',blind)
             self.assertIn('Simulated reference fixture',blind)
 
+    def test_project_clamps_output_tokens_when_remaining_budget_is_tight(self):
+        task=load_tasks()['agency-landing-page']
+        limits={**load_round(ROOT/'configs/landing-page-fable.json')['limits'],'max_run_usd':1.0}
+        fable=load_round(ROOT/'configs/landing-page-fable.json')['models'][0]
+        seen_max_tokens=[]
+        def transport(m,messages,tools,max_tokens,timeout):
+            seen_max_tokens.append(max_tokens)
+            return response([{'id':'s','function':{'name':'submit','arguments':'{}'}}],cost=0.1)
+        with patch('benchmark.project.reference_images',return_value=[]):
+            state=run_model(fable,task,None,limits,lambda s:None,transport,lambda *a:10_000)
+        self.assertEqual(state['status'],'completed')
+        self.assertTrue(state['submitted'])
+        self.assertEqual(len(seen_max_tokens),1)
+        self.assertGreaterEqual(seen_max_tokens[0],1024)
+        self.assertLess(seen_max_tokens[0],limits['max_output_tokens'])
+
+    def test_ci_budget_ignores_incomplete_runs_and_restores_latest_artifact(self):
+        import io as _io
+        from benchmark import ci_budget
+        buf=_io.BytesIO()
+        with zipfile.ZipFile(buf,'w') as z:
+            z.writestr('model-budget-ledger.json',json.dumps({'schema_version':1,'entries':{'k':{'model':'m','known_usd':1.5,'reserved_usd':0}}}))
+        def fake_api(endpoint,raw=False):
+            if 'runs' in endpoint:
+                return {'workflow_runs':[{'id':10,'status':'completed'},{'id':11,'status':'in_progress'},{'id':12,'status':'completed'}]}
+            if endpoint.endswith('/zip'):
+                return buf.getvalue()
+            return {'artifacts':[{'id':99,'expired':False,'workflow_run':{'id':10}}]}
+        with tempfile.TemporaryDirectory() as folder:
+            target=Path(folder)/'results/model-budget-ledger.json'
+            with patch('benchmark.ci_budget.api',fake_api), \
+                 patch('benchmark.ci_budget.Path',return_value=target), \
+                 patch.dict('os.environ',{'GITHUB_REPOSITORY':'o/r','GITHUB_RUN_ID':'12','GITHUB_RUN_ATTEMPT':'1'}):
+                ci_budget.main()
+            self.assertEqual(json.loads(target.read_text())['entries']['k']['known_usd'],1.5)
+
 
 if __name__=='__main__':unittest.main()

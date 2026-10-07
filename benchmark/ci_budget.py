@@ -19,7 +19,7 @@ def main():
     if int(os.environ.get('GITHUB_RUN_ATTEMPT','1'))>1:
         raise ValueError('Start a new workflow with resume_run_id; rerunning a billable job may reuse stale budget history.')
     runs=api(f'repos/{repo}/actions/workflows/benchmark-live.yml/runs?per_page=100')['workflow_runs']
-    older_runs=[r for r in runs if str(r['id'])!=current]
+    older_runs=[r for r in runs if str(r['id'])!=current and r.get('status')=='completed']
     artifacts=api(f'repos/{repo}/actions/artifacts?name=benchmark-model-budget&per_page=100')['artifacts']
     previous=[a for a in artifacts if str(a['workflow_run']['id'])!=current]
     target=Path('results/model-budget-ledger.json');target.parent.mkdir(parents=True,exist_ok=True)

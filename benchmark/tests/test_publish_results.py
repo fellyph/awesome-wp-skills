@@ -40,3 +40,26 @@ class PublishResultsTests(unittest.TestCase):
             self.assertIsNone(exported["score"])
             self.assertIsNone(exported["artifact_pass"])
             self.assertEqual(exported["checks"], {})
+
+    def test_rounds_float_cost_and_links_navigation_audit(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            run = root / "raw" / "runs" / "0000-test"
+            (run / "project").mkdir(parents=True)
+            (run / "evaluation").mkdir()
+            (run / "project" / "theme.json").write_text("{}")
+            (run / "navigation-audit-v2.json").write_text('{"audit":"navigation-observation-v2"}')
+            result = {"model":"test-model", "skill":None, "task":"test", "category":"themes",
+                      "profile":"wordpress-project-v2", "scoring_version":"v1", "artifact_pass":True,
+                      "execution_completion":True, "delivery_success":True, "status":"passed",
+                      "score":100, "known_cost_usd":2.7879519999999993, "cost_complete":True,
+                      "tokens":10, "calls":1, "evaluation":{"checks":{"activation":True}}}
+            (run / "result.json").write_text(json.dumps(result))
+            (run / "agent.json").write_text(json.dumps({}))
+            target = publish_round(root / "raw", root / "published")
+            exported = json.loads((target / "no-skill" / "result.json").read_text())
+            self.assertEqual(exported["known_cost_usd"], 2.787952)
+            readme = (target / "README.md").read_text()
+            self.assertIn("$2.787952", readme)
+            self.assertNotIn("2.7879519999999993", readme)
+            self.assertIn("no-skill/navigation-audit-v2.json", readme)

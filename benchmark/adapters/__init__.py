@@ -138,7 +138,13 @@ def _run_model(model, task, skill, limits, checkpoint, transport, token_counter,
         if output_limit <= 0:
             state['status'] = 'token_limit' if project else 'budget_exceeded'; break
         input_multiplier, output_multiplier = pricing_multipliers(model, input_bound)
-        reserve = (input_bound * input_multiplier * max(2 * rates['input_per_million_usd'], rates.get('cache_write_per_million_usd', 0)) + output_limit * rates['output_per_million_usd'] * output_multiplier) / 1_000_000
+        input_reserve = (input_bound * input_multiplier * max(2 * rates['input_per_million_usd'], rates.get('cache_write_per_million_usd', 0))) / 1_000_000
+        output_rate = (rates['output_per_million_usd'] * output_multiplier) / 1_000_000
+        if project and state['cost_usd'] + input_reserve + output_limit * output_rate > limits['max_run_usd']:
+            affordable = int((limits['max_run_usd'] - state['cost_usd'] - input_reserve) / output_rate)
+            if affordable >= min(1024, limits['max_output_tokens']):
+                output_limit = min(output_limit, affordable)
+        reserve = input_reserve + output_limit * output_rate
         if state['cost_usd'] + reserve > limits['max_run_usd']:
             state['status'] = 'monetary_limit' if project else 'budget_exceeded'; break
         record = {'index': call_index, 'status': 'pending', 'reserved_usd': reserve,

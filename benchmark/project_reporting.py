@@ -28,7 +28,7 @@ def project_report(directory, manifest, rows):
     directory = Path(directory)
     rows = [r for r in rows if r.get('profile') == 'wordpress-project-v2']
     if not rows: return
-    public = ROOT / 'tasks/agency-landing-page/public'
+    public = ROOT / 'tasks' / rows[0]['task'] / 'public'
     review = directory / 'blind-review'; review.mkdir(exist_ok=True)
     mapping_path = directory / 'review-map.json'
     mapping = read_json(mapping_path) if mapping_path.exists() else {}

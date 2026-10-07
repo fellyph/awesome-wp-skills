@@ -17,6 +17,10 @@ PROFILE = 'wordpress-project-v2'
 TASK_ROOT = ROOT / 'tasks/agency-landing-page'
 
 
+def task_root(task):
+    return ROOT / 'tasks' / task['id'] if isinstance(task, dict) and 'id' in task else TASK_ROOT
+
+
 def safe_files(files):
     for name, contents in files.items():
         if not isinstance(name, str) or name.startswith('/') or '\\' in name or any(p in ('', '.', '..', '__proto__', 'constructor') for p in name.split('/')):
@@ -40,15 +44,16 @@ def zip_bytes(files):
 def package(task, files, output):
     output = Path(output); output.mkdir(parents=True, exist_ok=True)
     safe_files(files)
+    root = task_root(task)
     theme = zip_bytes({'benchmark-fixture/' + k: v for k, v in files.items()})
     blueprint = json.loads(json.dumps(task['blueprint']))
     blueprint['steps'] = [
         {'step': 'mkdir', 'path': '/wordpress/wp-content/mu-plugins'},
         {'step': 'writeFile', 'path': '/wordpress/wp-content/mu-plugins/benchmark-contact.php',
-         'data': (TASK_ROOT / 'fixtures/contact.php').read_text()},
+         'data': (root / 'fixtures/contact.php').read_text()},
         {'step': 'installTheme', 'themeData': {'resource': 'bundled', 'path': '/theme.zip'},
          'options': {'activate': True}},
-        {'step': 'runPHP', 'code': (TASK_ROOT / 'fixtures/setup.php').read_text()},
+        {'step': 'runPHP', 'code': (root / 'fixtures/setup.php').read_text()},
     ]
     blueprint['landingPage'] = '/'
     (output / 'theme.zip').write_bytes(theme)
@@ -101,7 +106,8 @@ class Preview:
     def call(self, name, arguments, files):
         fingerprint = digest(files)
         if fingerprint != self.last_hash:
-            self.request({'op': 'sync', 'files': safe_files(files), 'fixture': (TASK_ROOT / 'fixtures/contact.php').read_text()})
+            root = task_root(self.task)
+            self.request({'op': 'sync', 'files': safe_files(files), 'fixture': (root / 'fixtures/contact.php').read_text()})
             self.last_hash = fingerprint
         return self.request({'op': name, 'arguments': arguments})
 
@@ -116,5 +122,6 @@ class Preview:
 
 def reference_images(task):
     if task.get('profile') != PROFILE: return []
-    return [{'mime_type': 'image/png', 'data': base64.b64encode((TASK_ROOT / 'public' / name).read_bytes()).decode()}
+    root = task_root(task)
+    return [{'mime_type': 'image/png', 'data': base64.b64encode((root / 'public' / name).read_bytes()).decode()}
             for name in ('reference-desktop.png', 'reference-mobile.png')]

@@ -31,6 +31,8 @@ def read_json(path):
 
 def safe_result(result, agent):
     exported = {key: result.get(key) for key in RESULT_FIELDS}
+    if isinstance(exported.get("known_cost_usd"), float):
+        exported["known_cost_usd"] = round(exported["known_cost_usd"], 6)
     exported["checks"] = result.get("evaluation", {}).get("checks", {})
     exported["generated_artifact"] = result.get("calls", 0) > 0
     if not exported["generated_artifact"]:
@@ -91,6 +93,8 @@ def publish_round(source, destination):
         if result["generated_artifact"]:
             lines.extend([f"- [Source]({condition}/source/) · [theme ZIP]({condition}/theme.zip) · [Playground bundle]({condition}/playground-bundle.zip)",
                           f"- [Desktop screenshot]({condition}/screenshot-desktop.png) · [Mobile screenshot]({condition}/screenshot-mobile.png)"])
+            if (target / condition / "navigation-audit-v2.json").exists():
+                lines.append(f"- [Post-run navigation audit]({condition}/navigation-audit-v2.json)")
         else:
             lines.append(f"- No artifact was generated: `{result['generation_error']}`")
         lines.append("")
