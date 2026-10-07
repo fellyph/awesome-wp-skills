@@ -10,7 +10,7 @@
   "delivery_success": false,
   "status": "failed",
   "score": 85.0,
-  "known_cost_usd": 1.5828115000000003,
+  "known_cost_usd": 1.582812,
   "cost_complete": true,
   "tokens": 398831,
   "calls": 17,

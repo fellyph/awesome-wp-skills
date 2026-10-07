@@ -5,28 +5,42 @@
   "category": "themes",
   "profile": "wordpress-project-v2",
   "scoring_version": "landing-page-v1",
-  "artifact_pass": null,
+  "artifact_pass": true,
   "execution_completion": false,
   "delivery_success": false,
-  "status": "token_preflight_error",
-  "score": null,
-  "known_cost_usd": 0.0,
+  "status": "monetary_limit",
+  "score": 100.0,
+  "known_cost_usd": 1.61585,
   "cost_complete": true,
-  "tokens": 0,
-  "calls": 0,
-  "generation_seconds": 0.6730963329900987,
-  "evaluation_seconds": 76.1908076669788,
+  "tokens": 109609,
+  "calls": 9,
+  "generation_seconds": 168.37665049999487,
+  "evaluation_seconds": 40.197465708013624,
   "development_iterations": 0,
-  "generation_status": "token_preflight_error",
+  "generation_status": "monetary_limit",
   "cost_basis": [
-    "simulated"
+    "estimated_from_configured_rates"
   ],
   "visual_review": {
     "status": "pending",
-    "blind_id": "site-9c3f64ec"
+    "blind_id": "site-1ad8a5da"
   },
   "task_version": "1.0.0",
-  "checks": {},
-  "generated_artifact": false,
-  "generation_error": "Token preflight (no generation dispatched) HTTP 400 (invalid_request_error); no automatic retry"
+  "checks": {
+    "activation": true,
+    "blocks": true,
+    "editable": true,
+    "sections": true,
+    "cta": true,
+    "form": true,
+    "axe": true,
+    "keyboard": true,
+    "responsive": true,
+    "mobile_navigation": true,
+    "errors": true,
+    "assets": true,
+    "resources": true,
+    "security": true
+  },
+  "generated_artifact": true
 }

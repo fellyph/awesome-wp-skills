@@ -10,10 +10,11 @@ The ignored raw round, its hidden reference source, request checkpoints and prov
 - Artifact pass: `False`
 - Execution completion: `False`
 - Delivery success: `False`
-- Known cost: `$2.7879519999999993`
+- Known cost: `$2.787952`
 - Tokens / calls: `718759` / `26`
 - [Source](wp-block-themes/source/) · [theme ZIP](wp-block-themes/theme.zip) · [Playground bundle](wp-block-themes/playground-bundle.zip)
 - [Desktop screenshot](wp-block-themes/screenshot-desktop.png) · [Mobile screenshot](wp-block-themes/screenshot-mobile.png)
+- [Post-run navigation audit](wp-block-themes/navigation-audit-v2.json)
 
 ## no-skill
 
@@ -34,7 +35,8 @@ The ignored raw round, its hidden reference source, request checkpoints and prov
 - Artifact pass: `False`
 - Execution completion: `True`
 - Delivery success: `False`
-- Known cost: `$1.5828115000000003`
+- Known cost: `$1.582812`
 - Tokens / calls: `398831` / `17`
 - [Source](frontend-design/source/) · [theme ZIP](frontend-design/theme.zip) · [Playground bundle](frontend-design/playground-bundle.zip)
 - [Desktop screenshot](frontend-design/screenshot-desktop.png) · [Mobile screenshot](frontend-design/screenshot-mobile.png)
+- [Post-run navigation audit](frontend-design/navigation-audit-v2.json)

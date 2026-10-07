@@ -5,33 +5,36 @@ The ignored raw round, its hidden reference source, request checkpoints and prov
 
 ## wp-block-themes
 
-- Status: `token_preflight_error`
-- Automated score: `N/A — no model generation`
-- Artifact pass: `N/A — no model generation`
+- Status: `monetary_limit`
+- Automated score: `70.0`
+- Artifact pass: `False`
 - Execution completion: `False`
 - Delivery success: `False`
-- Known cost: `$0.0`
-- Tokens / calls: `0` / `0`
-- No artifact was generated: `Token preflight (no generation dispatched) HTTP 400 (invalid_request_error); no automatic retry`
+- Known cost: `$1.44354`
+- Tokens / calls: `85286` / `5`
+- [Source](wp-block-themes/source/) · [theme ZIP](wp-block-themes/theme.zip) · [Playground bundle](wp-block-themes/playground-bundle.zip)
+- [Desktop screenshot](wp-block-themes/screenshot-desktop.png) · [Mobile screenshot](wp-block-themes/screenshot-mobile.png)
 
 ## no-skill
 
-- Status: `token_preflight_error`
-- Automated score: `N/A — no model generation`
-- Artifact pass: `N/A — no model generation`
+- Status: `monetary_limit`
+- Automated score: `100.0`
+- Artifact pass: `True`
 - Execution completion: `False`
 - Delivery success: `False`
-- Known cost: `$0.0`
-- Tokens / calls: `0` / `0`
-- No artifact was generated: `Token preflight (no generation dispatched) HTTP 400 (invalid_request_error); no automatic retry`
+- Known cost: `$1.61585`
+- Tokens / calls: `109609` / `9`
+- [Source](no-skill/source/) · [theme ZIP](no-skill/theme.zip) · [Playground bundle](no-skill/playground-bundle.zip)
+- [Desktop screenshot](no-skill/screenshot-desktop.png) · [Mobile screenshot](no-skill/screenshot-mobile.png)
 
 ## frontend-design
 
-- Status: `token_preflight_error`
-- Automated score: `N/A — no model generation`
-- Artifact pass: `N/A — no model generation`
+- Status: `monetary_limit`
+- Automated score: `70.0`
+- Artifact pass: `False`
 - Execution completion: `False`
 - Delivery success: `False`
-- Known cost: `$0.0`
-- Tokens / calls: `0` / `0`
-- No artifact was generated: `Token preflight (no generation dispatched) HTTP 400 (invalid_request_error); no automatic retry`
+- Known cost: `$1.76115`
+- Tokens / calls: `117191` / `7`
+- [Source](frontend-design/source/) · [theme ZIP](frontend-design/theme.zip) · [Playground bundle](frontend-design/playground-bundle.zip)
+- [Desktop screenshot](frontend-design/screenshot-desktop.png) · [Mobile screenshot](frontend-design/screenshot-mobile.png)

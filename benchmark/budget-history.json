@@ -56,6 +56,69 @@
       "known_usd": 0,
       "reserved_usd": 1.17088,
       "state": "uncertain"
+    },
+    "cd83e497282e94dd554304a5ddd1c510a6f8fdfc51d7950a7c9c1b6e8e09b7f0/2026-09-07T14:51:05.413758+00:00/0000-80377d4cc727": {
+      "model": "gpt-6-astra",
+      "source": "landing-page-astra-20260907/runs/0000-80377d4cc727",
+      "known_usd": 2.7879519999999993,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "cd83e497282e94dd554304a5ddd1c510a6f8fdfc51d7950a7c9c1b6e8e09b7f0/2026-09-07T14:51:05.413758+00:00/0001-44310a2b765a": {
+      "model": "gpt-6-astra",
+      "source": "landing-page-astra-20260907/runs/0001-44310a2b765a",
+      "known_usd": 2.364737,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "cd83e497282e94dd554304a5ddd1c510a6f8fdfc51d7950a7c9c1b6e8e09b7f0/2026-09-07T14:51:05.413758+00:00/0002-8971ca38766f": {
+      "model": "gpt-6-astra",
+      "source": "landing-page-astra-20260907/runs/0002-8971ca38766f",
+      "known_usd": 1.5828115000000003,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "9d14fbde51edea9b70504db1463b19374e394b3112388e51b1a2cae96326503d/2026-09-07T15:15:59.506357+00:00/0000-09803b90a77b": {
+      "model": "claude-fable-5-1",
+      "source": "landing-page-fable-20260907/runs/0000-09803b90a77b",
+      "known_usd": 0,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "9d14fbde51edea9b70504db1463b19374e394b3112388e51b1a2cae96326503d/2026-09-07T15:15:59.506357+00:00/0001-6c6d89c7fd87": {
+      "model": "claude-fable-5-1",
+      "source": "landing-page-fable-20260907/runs/0001-6c6d89c7fd87",
+      "known_usd": 0,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "9d14fbde51edea9b70504db1463b19374e394b3112388e51b1a2cae96326503d/2026-09-07T15:15:59.506357+00:00/0002-318a85e66e4b": {
+      "model": "claude-fable-5-1",
+      "source": "landing-page-fable-20260907/runs/0002-318a85e66e4b",
+      "known_usd": 0,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "92abef4b4ce31892033238eea9a484415908cad3ebaff21f5c5217ef1cb2d75a/2026-09-07T20:10:29.704759+00:00/0000-2f45c2f54ff1": {
+      "model": "claude-fable-5-1",
+      "source": "landing-page-fable-accessibility-20260907/runs/0000-2f45c2f54ff1",
+      "known_usd": 1.44354,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "92abef4b4ce31892033238eea9a484415908cad3ebaff21f5c5217ef1cb2d75a/2026-09-07T20:10:29.704759+00:00/0001-047495f21874": {
+      "model": "claude-fable-5-1",
+      "source": "landing-page-fable-accessibility-20260907/runs/0001-047495f21874",
+      "known_usd": 1.61585,
+      "reserved_usd": 0,
+      "state": "settled"
+    },
+    "92abef4b4ce31892033238eea9a484415908cad3ebaff21f5c5217ef1cb2d75a/2026-09-07T20:10:29.704759+00:00/0002-1b412f78b399": {
+      "model": "claude-fable-5-1",
+      "source": "landing-page-fable-accessibility-20260907/runs/0002-1b412f78b399",
+      "known_usd": 1.7611499999999998,
+      "reserved_usd": 0,
+      "state": "settled"
     }
   }
 }
