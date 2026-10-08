@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.8-flash",
+  "skill": null,
+  "task": "accessibility-form",
+  "category": "accessibility",
+  "profile": "files-only-v1",
+  "scoring_version": "micro-v1",
+  "artifact_pass": false,
+  "execution_completion": false,
+  "delivery_success": false,
+  "status": "incomplete",
+  "score": 25.0,
+  "known_cost_usd": 0.067633,
+  "cost_complete": true,
+  "tokens": 25661,
+  "calls": 4,
+  "generation_seconds": 67.59903970797313,
+  "evaluation_seconds": 9.213237082993146,
+  "development_iterations": null,
+  "generation_status": "incomplete",
+  "cost_basis": [
+    "estimated_from_configured_rates"
+  ],
+  "visual_review": null,
+  "task_version": null,
+  "checks": {
+    "renders": true,
+    "axe": false,
+    "keyboard": false,
+    "semantics": false
+  },
+  "generated_artifact": true
+}

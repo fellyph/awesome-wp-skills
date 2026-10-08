@@ -1,0 +1,22 @@
+{
+  "checks": {
+    "renders": true,
+    "axe": false,
+    "keyboard": false,
+    "semantics": false
+  },
+  "measurements": {
+    "axe_violations": [
+      {
+        "id": "label",
+        "impact": "critical",
+        "targets": [
+          [
+            "input"
+          ]
+        ]
+      }
+    ]
+  },
+  "error": null
+}
