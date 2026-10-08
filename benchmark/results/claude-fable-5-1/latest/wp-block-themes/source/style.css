@@ -1,0 +1,283 @@
+/*
+Theme Name: Northline Benchmark
+Theme URI: https://example.invalid/northline
+Author: Northline Studio
+Description: A restrained editorial block theme for an independent digital agency. Local Georgia headings, Trebuchet MS body text, paper / ink / moss palette.
+Version: 1.0.0
+Requires at least: 6.9
+Tested up to: 6.9
+Requires PHP: 8.3
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: benchmark-fixture
+Tags: block-themes, full-site-editing, one-column, custom-colors, editor-style
+*/
+
+/* ---------- Base ---------- */
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* ---------- Editorial helpers ---------- */
+.northline-eyebrow {
+	font-family: var(--wp--preset--font-family--body);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	margin-bottom: 0.75rem !important;
+}
+
+.northline-wordmark {
+	font-family: var(--wp--preset--font-family--body);
+	font-size: 1.125rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.northline-wordmark a {
+	text-decoration: none;
+}
+
+.northline-section {
+	padding-top: var(--wp--preset--spacing--60);
+	padding-bottom: var(--wp--preset--spacing--60);
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.northline-section:last-child {
+	border-bottom: 0;
+}
+
+.northline-hero {
+	padding-top: var(--wp--preset--spacing--60);
+	padding-bottom: var(--wp--preset--spacing--60);
+}
+
+.northline-hero .wp-block-image img {
+	width: 100%;
+	height: auto;
+}
+
+.northline-hero .wp-block-image {
+	margin-top: var(--wp--preset--spacing--50);
+}
+
+.northline-lede {
+	max-width: 36rem;
+}
+
+.northline-meta {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/* ---------- Header ---------- */
+.northline-header {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.northline-header .wp-block-navigation a {
+	text-decoration: none;
+}
+
+.northline-header .wp-block-navigation a:hover,
+.northline-header .wp-block-navigation a:focus-visible {
+	text-decoration: underline;
+	text-underline-offset: 0.25em;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open {
+	background-color: var(--wp--preset--color--paper);
+	color: var(--wp--preset--color--ink);
+	padding: 2.5rem var(--wp--preset--spacing--40);
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--editorial);
+	font-size: 1.75rem;
+}
+
+.wp-block-navigation__responsive-container-open,
+.wp-block-navigation__responsive-container-close {
+	color: var(--wp--preset--color--ink);
+}
+
+.wp-block-navigation__responsive-container-open:focus-visible,
+.wp-block-navigation__responsive-container-close:focus-visible {
+	outline: 2px solid var(--wp--preset--color--ink);
+	outline-offset: 3px;
+}
+
+/* ---------- Footer ---------- */
+.northline-footer {
+	padding-top: var(--wp--preset--spacing--50);
+	padding-bottom: var(--wp--preset--spacing--50);
+	border-top: 1px solid var(--wp--preset--color--line);
+}
+
+/* ---------- Quote ---------- */
+.wp-block-quote {
+	border: 0;
+	padding-left: 0;
+	max-width: 46rem;
+}
+
+.wp-block-quote p {
+	margin-bottom: 1rem;
+}
+
+.wp-block-quote cite {
+	display: block;
+	font-family: var(--wp--preset--font-family--body);
+	font-size: var(--wp--preset--font-size--small);
+	font-style: normal;
+	margin-top: 1rem;
+}
+
+/* ---------- Details / FAQ ---------- */
+.northline-faq {
+	max-width: 46rem;
+}
+
+.wp-block-details {
+	border-top: 1px solid var(--wp--preset--color--line);
+	padding: 1.25rem 0;
+	margin: 0;
+}
+
+.wp-block-details:last-child {
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.wp-block-details summary {
+	cursor: pointer;
+	font-size: var(--wp--preset--font-size--medium);
+	padding: 0.25rem 0;
+}
+
+.wp-block-details summary:focus-visible {
+	outline: 2px solid var(--wp--preset--color--ink);
+	outline-offset: 3px;
+}
+
+.wp-block-details[open] summary {
+	margin-bottom: 0.75rem;
+}
+
+.wp-block-details > :not(summary) {
+	margin-top: 0.5rem;
+	margin-bottom: 0;
+}
+
+/* ---------- Contact form (styles the fixed [benchmark_contact] shortcode) ---------- */
+.northline-contact-form {
+	max-width: 40rem;
+}
+
+.northline-contact-form form {
+	display: grid;
+	gap: 1.25rem;
+}
+
+.northline-contact-form label {
+	display: block;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 700;
+	margin-bottom: 0.4rem;
+}
+
+.northline-contact-form input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.northline-contact-form textarea,
+.northline-contact-form select {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	font: inherit;
+	font-size: var(--wp--preset--font-size--medium);
+	color: var(--wp--preset--color--ink);
+	background: var(--wp--preset--color--white);
+	border: 1px solid #b8b6ad;
+	border-radius: 0;
+	padding: 0.85rem 1rem;
+}
+
+.northline-contact-form textarea {
+	min-height: 9rem;
+	resize: vertical;
+}
+
+.northline-contact-form input:focus-visible,
+.northline-contact-form textarea:focus-visible,
+.northline-contact-form select:focus-visible {
+	outline: 2px solid var(--wp--preset--color--ink);
+	outline-offset: 2px;
+	border-color: var(--wp--preset--color--ink);
+}
+
+.northline-contact-form button,
+.northline-contact-form input[type="submit"] {
+	display: inline-block;
+	width: auto;
+	font-family: var(--wp--preset--font-family--body);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 700;
+	color: var(--wp--preset--color--white);
+	background: var(--wp--preset--color--ink);
+	border: 0;
+	border-radius: 0;
+	padding: 1rem 1.75rem;
+	cursor: pointer;
+	justify-self: start;
+}
+
+.northline-contact-form button:hover,
+.northline-contact-form input[type="submit"]:hover {
+	background: #15271f;
+}
+
+.northline-contact-form button:focus-visible,
+.northline-contact-form input[type="submit"]:focus-visible {
+	outline: 2px solid var(--wp--preset--color--ink);
+	outline-offset: 3px;
+}
+
+.northline-contact-form [role="alert"],
+.northline-contact-form .error,
+.northline-contact-form .is-error {
+	color: #8a2a1e;
+}
+
+.northline-contact-form .success,
+.northline-contact-form .is-success {
+	background: var(--wp--preset--color--moss);
+	padding: 1rem 1.25rem;
+}
+
+/* ---------- Responsive refinements ---------- */
+@media (max-width: 781px) {
+	.northline-section,
+	.northline-hero {
+		padding-top: var(--wp--preset--spacing--50);
+		padding-bottom: var(--wp--preset--spacing--50);
+	}
+
+	.wp-block-columns.northline-columns {
+		gap: 2rem;
+	}
+}

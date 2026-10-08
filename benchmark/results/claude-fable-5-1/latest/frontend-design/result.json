@@ -1,0 +1,46 @@
+{
+  "model": "claude-fable-5-1",
+  "skill": "frontend-design",
+  "task": "agency-landing-page",
+  "category": "themes",
+  "profile": "wordpress-project-v2",
+  "scoring_version": "landing-page-v1",
+  "artifact_pass": false,
+  "execution_completion": false,
+  "delivery_success": false,
+  "status": "monetary_limit",
+  "score": 70.0,
+  "known_cost_usd": 1.76115,
+  "cost_complete": true,
+  "tokens": 117191,
+  "calls": 7,
+  "generation_seconds": 176.60014695796417,
+  "evaluation_seconds": 47.03471666702535,
+  "development_iterations": 0,
+  "generation_status": "monetary_limit",
+  "cost_basis": [
+    "estimated_from_configured_rates"
+  ],
+  "visual_review": {
+    "status": "pending",
+    "blind_id": "site-4bff417f"
+  },
+  "task_version": "1.0.0",
+  "checks": {
+    "activation": true,
+    "blocks": false,
+    "editable": false,
+    "sections": true,
+    "cta": false,
+    "form": true,
+    "axe": true,
+    "keyboard": true,
+    "responsive": true,
+    "mobile_navigation": true,
+    "errors": true,
+    "assets": true,
+    "resources": true,
+    "security": true
+  },
+  "generated_artifact": true
+}

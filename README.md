@@ -137,7 +137,7 @@ These are starting points, not tested bundles. Select tools for the work at hand
 
 ## Model and skill benchmark
 
-The [benchmark framework](benchmark/README.md) compares individual skills and models across themes, plugins, fixes, performance, and accessibility using WordPress Playground in CI. It includes native API adapters and OpenRouter, a USD 20 per-model budget limit, and reproducible reports. Bundled runs are simulated validation; real-model results are not yet published.
+The [benchmark framework](benchmark/README.md) compares individual skills and models across themes, plugins, fixes, performance, and accessibility using WordPress Playground in CI. It includes native API adapters and OpenRouter, a USD 20 per-model budget limit, and reproducible reports. Its first [practical scenario](benchmark/LANDING-PAGE.md) delivers an editable agency landing page with a fixed visual brief, editor handover tests, screenshots and blinded human review. [Published model snapshots](benchmark/results/) retain the latest safe result for each model; raw benchmark output remains local and ignored.
 
 ## Contributing
 

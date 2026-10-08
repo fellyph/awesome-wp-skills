@@ -1,0 +1,102 @@
+/*
+Theme Name: Northline
+Description: A restrained editorial block theme for an independent digital studio.
+Version: 1.0.0
+Requires at least: 6.9
+Requires PHP: 8.0
+License: GPL-2.0-or-later
+Text Domain: benchmark-fixture
+*/
+* { box-sizing: border-box; }
+body { margin: 0; }
+.wp-site-blocks > * { margin-block: 0; }
+.site-header, .landing, .site-footer { width: 90%; max-width: 1152px; margin-inline: auto; }
+.site-header { min-height: 96px; border-bottom: 1px solid #acb8ae; }
+.wordmark { font-size: 24px; font-weight: 700; letter-spacing: -1.2px; margin: 0; }
+.wordmark a { text-decoration: none; }
+.site-header .wp-block-navigation { font-size: 14px; }
+.site-header .wp-block-navigation__container { gap: 26px; }
+a { text-underline-offset: 4px; }
+a:hover { text-decoration: underline; }
+:where(a, button, input, textarea, summary):focus-visible { outline: 2px solid #213a31; outline-offset: 5px; }
+.hero { padding-top: 88px; }
+.landing p, .landing h1, .landing h2, .landing h3, .landing figure, .landing blockquote { margin: 0; }
+.landing .eyebrow { font-size: 12px; line-height: 1.5; font-weight: 700; letter-spacing: 1.4px; }
+.landing .hero h1 { font-size: 80px; max-width: 960px; margin-top: 32px; }
+.landing .hero-copy { max-width: 570px; font-size: 21px; line-height: 1.6; margin-top: 32px; }
+.hero .wp-block-buttons { margin-top: 32px; }
+.wp-block-button__link { text-decoration: none; line-height: 1.5; font-weight: 400; }
+.wp-block-button__link:hover, .contact button:hover { background: #345345; text-decoration: none; }
+.landing .hero-art { margin-top: 50px; }
+.hero-art img { display: block; width: 100%; height: 530px; object-fit: cover; }
+.landing .section { margin-top: 0; padding: 98px 0 76px; border-bottom: 1px solid #acb8ae; }
+.landing h2 { font-size: 48px; margin-top: 26px; }
+.services-grid, .work-grid { display: grid; gap: 40px; margin-top: 24px; }
+.services-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.work-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.services-grid > *, .work-grid > * { margin: 0; min-width: 0; }
+.services-grid p { margin-top: 22px; }
+.work-card img { display: block; width: 100%; height: auto; }
+.work-card h3 { margin-top: 18px; }
+.work-card p { font-size: 14px; margin-top: 22px; }
+.landing .wp-block-quote { max-width: 900px; margin-top: 42px; border: 0; padding: 0; }
+.wp-block-quote p { font-family: Georgia, serif; font-size: 46px; line-height: 1.28; letter-spacing: -0.015em; }
+.wp-block-quote cite { display: block; font-family: 'Trebuchet MS', sans-serif; font-size: 14px; font-style: normal; margin-top: 26px; }
+.faq-list { max-width: 850px; margin-top: 26px; }
+.faq-list .wp-block-details { margin: 0; border-top: 1px solid #acb8ae; padding: 22px 0 46px; }
+.wp-block-details summary { font-size: 20px; cursor: pointer; }
+.wp-block-details p { margin-top: 20px; }
+.landing .faq { padding-bottom: 52px; }
+.contact > p:not(.eyebrow) { margin-top: 26px; }
+.contact form { max-width: 720px; margin-top: 24px; }
+.contact form p { margin: 0 0 16px; }
+.contact label { display: block; font-size: 14px; margin-bottom: 16px; }
+.contact input:not([type='hidden']), .contact textarea { display: block; width: 100%; margin-top: 6px; border: 1px solid #788b7f; border-radius: 0; background: #fff; color: #213a31; font: inherit; padding: 10px 12px; }
+.contact input:not([type='hidden']) { height: 50px; }
+.contact textarea { height: 140px; resize: vertical; }
+.contact button, .contact input[type='submit'] { width: auto; height: auto; border: 0; border-radius: 0; background: #213a31; color: white; padding: 18px 25px; font: 400 18px/1.4 'Trebuchet MS', sans-serif; cursor: pointer; }
+.site-footer { padding: 68px 0 42px; }
+.site-footer p:not(.wordmark) { font-size: 14px; margin: 26px 0 0; }
+.site-header .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open { padding: 28px 6%; background: #f4f2eb; color: #213a31; }
+.site-header .is-menu-open .wp-block-navigation__responsive-container-close { min-width: 44px; min-height: 44px; display: grid; place-items: center; }
+.site-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container { gap: 24px; font-size: 22px; }
+@media (min-width: 601px) and (max-width: 900px) {
+ .landing .hero h1 { font-size: 64px; }
+ .services-grid { gap: 24px; }
+ .services-grid h3 { font-size: 25px; }
+}
+@media (max-width: 600px) {
+ .site-header, .landing, .site-footer { width: 88%; }
+ .site-header { min-height: 81px; }
+ .wordmark { font-size: 24px; }
+ .site-header .wp-block-navigation__responsive-container-open { padding: 10px 0 10px 20px; min-width: 44px; min-height: 44px; }
+ .hero { padding-top: 64px; }
+ .landing .eyebrow { font-size: 10px; letter-spacing: 1.2px; }
+ .landing .hero h1 { font-size: 52px; line-height: 1.08; margin-top: 32px; letter-spacing: -0.055em; }
+ .landing .hero-copy { font-size: 18px; margin-top: 26px; }
+ .hero .wp-block-buttons { margin-top: 32px; }
+ .hero-art img { height: 330px; }
+ .landing .hero-art { margin-top: 50px; }
+ .landing .section { padding-top: 72px; padding-bottom: 50px; }
+ .landing h2 { font-size: 34px; line-height: 1.08; margin-top: 28px; letter-spacing: -0.045em; }
+ .landing h3 { font-size: 30px; line-height: 1.2; }
+ .services-grid, .work-grid { grid-template-columns: 1fr; gap: 26px; margin-top: 24px; }
+ .services-grid p { margin-top: 22px; }
+ .work-card h3 { margin-top: 18px; }
+ .work-card p { margin-top: 20px; }
+ .work-grid { gap: 28px; }
+ .landing .wp-block-quote { margin-top: 40px; }
+ .wp-block-quote p { font-size: 28px; line-height: 1.22; }
+ .wp-block-quote cite { margin-top: 28px; font-size: 14px; }
+ .faq-list { margin-top: 26px; }
+ .faq-list .wp-block-details { padding: 23px 0 48px; }
+ .wp-block-details summary { font-size: 20px; }
+ .landing .faq { padding-bottom: 24px; }
+ .contact > p:not(.eyebrow) { margin-top: 28px; }
+ .contact form { margin-top: 28px; }
+ .contact form p { margin-bottom: 18px; }
+ .contact label { margin-bottom: 18px; }
+ .contact textarea { height: 140px; }
+ .site-footer { padding: 70px 0 42px; }
+ .site-footer p:not(.wordmark) { margin-top: 26px; }
+}

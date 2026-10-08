@@ -6,9 +6,14 @@
     "node": ">=22.16.0"
   },
   "scripts": {
+    "benchmark:sync": "python3 -m benchmark sync-skills",
     "benchmark:validate": "python3 -m benchmark validate",
+    "benchmark:validate:landing": "python3 -m benchmark validate --config benchmark/configs/landing-page.json",
     "benchmark:test": "python3 -m unittest discover -s benchmark/tests -v",
-    "benchmark:fixtures": "python3 -m benchmark verify-fixtures"
+    "benchmark:fixtures": "python3 -m benchmark verify-fixtures",
+    "catalog:test": "python3 -m unittest discover -s tests -v",
+    "catalog:validate": "python3 scripts/validate_skills.py",
+    "lint:md": "npx markdownlint-cli2@0.23.2 '**/*.md' '.github/**/*.md'"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

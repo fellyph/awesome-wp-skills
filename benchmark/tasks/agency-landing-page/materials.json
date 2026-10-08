@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "sha256": {
+    "public/LICENSE.txt": "88eb8e3d5a7fdade61567d3f2d66cf614481d2ca0063ca700e9dde40fc990fe9",
+    "public/brief.md": "367a6381e93447bd444e50e4987be9b95690ab6bb1341c3589ac4a772fa12f55",
+    "public/reference-desktop.png": "a66605a8f192914f1a291a0db06c5cc3c9da123fd6efe7df60517a9a446aa8d3",
+    "public/reference-mobile.png": "ea5ed767750e53c2ee7d02f3000215f95138fc5ed1414a83ef06a332f0c74736",
+    "initial/assets/fieldwork.svg": "558aa9cd71d8a5fe10714f5feda111884a76984d77c07f3eca80f47d00196c98",
+    "initial/assets/form.svg": "8a4c491997ba18769bbea810afebfc359ad713c1c1870071caff6a382709e3c5",
+    "initial/assets/replacement.svg": "39bd7d20337798a602cd029496bd1c87999e3b96709c9854134d03aa4adabf55",
+    "initial/assets/studio.svg": "1d43598ccea8591a1e1dab8dafc0833e094ce6ad5197d63d279038dfb44dcd0e"
+  }
+}

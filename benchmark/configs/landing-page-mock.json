@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "seed": 1729,
+  "repetitions": 1,
+  "tasks": [
+    "agency-landing-page"
+  ],
+  "skills": [
+    "wp-block-themes",
+    "frontend-design"
+  ],
+  "models": [
+    {
+      "id": "reference-project",
+      "adapter": "mock",
+      "behavior": "reference"
+    }
+  ],
+  "limits": {
+    "timeout_seconds": 900,
+    "max_calls": 40,
+    "max_output_tokens": 32768,
+    "max_total_tokens": 1000000,
+    "max_run_usd": 6,
+    "max_round_usd": 18,
+    "max_model_usd": 20
+  }
+}

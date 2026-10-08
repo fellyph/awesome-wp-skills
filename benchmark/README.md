@@ -1,5 +1,9 @@
 # WordPress model and skill benchmark
 
+The primary practical scenario is now the [editable agency landing-page benchmark](LANDING-PAGE.md). Start there for complete client deliverables, screenshots, editor handover, shared budgets and human visual review. The 15 tasks documented below remain diagnostic tests on the `files-only-v1` profile.
+
+Published model evidence lives in [results/](results/). It keeps the latest safe snapshot for each model; raw output directories remain ignored because their manifests contain hidden reference material.
+
 A reproducible benchmark for [issue #4](https://github.com/fellyph/awesome-wp-skills/issues/4). It compares each model without a skill against that same model with one eligible skill. WordPress artifacts run in a fresh Playground instance; the model agent runs outside WordPress.
 
 The implementation includes 15 focused tasks in five categories, six pinned skill sources, native provider adapters, an optional OpenRouter route, simulated CI runs, cost checkpoints and Markdown/JSON/CSV reports. **Bundled configurations use simulated models. Their results test the benchmark, not the quality of real models or skills.**
@@ -114,6 +118,18 @@ Rerun the identical command with the same output directory to resume. Completed 
 An interrupted provider request may have incurred a charge. The runner preserves pending/uncertain requests and does not retry paid generation automatically. Resolve its billing evidence before further paid work; there is no automatic reconciliation with provider invoices. Keep the old artifact intact if a new experiment is needed. This intentionally prioritizes cost accountability over filling every cell.
 
 Quality denominators exclude infrastructure/provider errors, while failed solutions and exhausted in-progress generations remain visible. Known costs include failed attempts. No successes means cost per success is `N/A`; missing telemetry is never zero. Compare skills on shared tasks and inspect paired repetition counts. Three repetitions support a pilot, not strong statistical conclusions. There is no global winner across categories.
+
+### Publish the latest result for a model
+
+Keep raw results under ignored `results/`. After reviewing a completed round, create or replace its tracked, safe snapshot:
+
+```sh
+python3 -m benchmark.publish_results \
+  --source results/landing-page-astra-20260907 \
+  --destination benchmark/results
+```
+
+The publisher keeps each submitted condition's source, theme ZIP, reproducible Playground bundle, screenshots, public criterion evidence and a concise result record at `benchmark/results/<model>/latest/`. It omits raw manifests, request data, provider payloads and no-generation starter artifacts. A later publish replaces only that model's `latest` snapshot; Git history retains earlier published versions.
 
 ## GitHub Actions
 

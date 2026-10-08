@@ -4,7 +4,10 @@ __pycache__/
 .lycheecache
 node_modules/
 # Benchmark outputs, fetched upstream resources and local credentials/configs.
+# Sanitized, latest-per-model result snapshots are intentionally tracked in benchmark/results/.
 results/
+!benchmark/results/
+!benchmark/results/**
 benchmark/.cache/
 benchmark/skills/
 benchmark/configs/*.local.json

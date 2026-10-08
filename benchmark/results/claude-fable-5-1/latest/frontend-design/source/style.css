@@ -1,0 +1,271 @@
+/*
+Theme Name: Northline Benchmark
+Theme URI: https://example.com/northline
+Author: Northline Studio
+Description: Editorial block theme for an independent digital agency. Paper, ink and moss; Georgia headings with Trebuchet MS body text.
+Version: 1.0.0
+Requires at least: 6.9
+Tested up to: 6.9
+Requires PHP: 8.3
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: benchmark-fixture
+Tags: block-themes, full-site-editing, one-column, custom-colors, editor-style
+*/
+
+/* ---------- Base ---------- */
+
+html {
+	scroll-behavior: smooth;
+	-webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+	}
+}
+
+:target {
+	scroll-margin-top: 1.5rem;
+}
+
+:focus-visible {
+	outline: 2px solid var(--wp--preset--color--ink);
+	outline-offset: 3px;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* ---------- Header & footer ---------- */
+
+.northline-header {
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+
+.northline-brand {
+	font-family: var(--wp--preset--font-family--body);
+	font-size: 1.125rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	margin: 0;
+}
+
+.northline-brand a {
+	text-decoration: none;
+}
+
+.northline-brand a:hover {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+.wp-block-navigation .wp-block-navigation-item__content {
+	text-decoration: none;
+	padding: 0.25rem 0;
+	border-bottom: 1px solid transparent;
+}
+
+.wp-block-navigation .wp-block-navigation-item__content:hover,
+.wp-block-navigation .wp-block-navigation-item__content:focus-visible {
+	border-bottom-color: var(--wp--preset--color--ink);
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--editorial);
+	font-size: 2rem;
+	font-weight: 400;
+}
+
+.wp-block-navigation__responsive-container-open,
+.wp-block-navigation__responsive-container-close {
+	color: var(--wp--preset--color--ink);
+}
+
+.northline-footer {
+	border-top: 1px solid var(--wp--preset--color--rule);
+}
+
+/* ---------- Sections ---------- */
+
+.northline-section + .northline-section {
+	border-top: 1px solid var(--wp--preset--color--rule);
+}
+
+.northline-kicker {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	margin-bottom: 0.25rem;
+}
+
+.northline-headline {
+	max-width: 15ch;
+}
+
+.northline-lede {
+	max-width: 32em;
+	line-height: 1.45;
+}
+
+.northline-artwork img {
+	width: 100%;
+	background: var(--wp--preset--color--moss);
+}
+
+.northline-hero .northline-artwork {
+	margin-bottom: 0;
+}
+
+/* Quote */
+
+.wp-block-quote.northline-quote {
+	border: 0;
+	padding: 0;
+	max-width: 22em;
+}
+
+.wp-block-quote.northline-quote p {
+	margin: 0;
+	font-style: normal;
+}
+
+.wp-block-quote.northline-quote cite {
+	display: block;
+	margin-top: 1.25rem;
+	font-family: var(--wp--preset--font-family--body);
+	font-size: var(--wp--preset--font-size--small);
+	font-style: normal;
+}
+
+/* FAQ */
+
+.northline-faq .wp-block-details {
+	margin: 0;
+}
+
+.northline-faq .wp-block-details:last-child {
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+
+.wp-block-details summary {
+	cursor: pointer;
+	font-family: var(--wp--preset--font-family--body);
+	font-size: 1.125rem;
+	padding: 0.15rem 0;
+}
+
+.wp-block-details summary:focus-visible {
+	outline-offset: 4px;
+}
+
+.wp-block-details[open] summary {
+	font-weight: 700;
+}
+
+.wp-block-details > :not(summary) {
+	margin-top: 0.75rem;
+	margin-bottom: 0.25rem;
+	font-size: var(--wp--preset--font-size--medium);
+	max-width: 60ch;
+}
+
+/* ---------- Contact form (benchmark_contact shortcode) ---------- */
+
+.northline-form form {
+	display: grid;
+	gap: 1rem;
+	margin: 0;
+}
+
+.northline-form p,
+.northline-form div {
+	margin: 0;
+}
+
+.northline-form label {
+	display: block;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 700;
+	margin-bottom: 0.35rem;
+}
+
+.northline-form input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.northline-form textarea,
+.northline-form select {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	font: inherit;
+	color: var(--wp--preset--color--ink);
+	background: var(--wp--preset--color--white);
+	border: 1px solid #8f9b93;
+	border-radius: 0;
+	padding: 0.75rem 0.9rem;
+	margin: 0 0 0.9rem;
+}
+
+.northline-form textarea {
+	min-height: 9rem;
+	resize: vertical;
+}
+
+.northline-form input:focus-visible,
+.northline-form textarea:focus-visible {
+	outline: 2px solid var(--wp--preset--color--ink);
+	outline-offset: 2px;
+	border-color: var(--wp--preset--color--ink);
+}
+
+.northline-form input[aria-invalid="true"],
+.northline-form textarea[aria-invalid="true"] {
+	border-color: #8a2a1e;
+}
+
+.northline-form button,
+.northline-form input[type="submit"] {
+	display: inline-block;
+	font-family: var(--wp--preset--font-family--body);
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 700;
+	color: var(--wp--preset--color--white);
+	background: var(--wp--preset--color--ink);
+	border: 1px solid var(--wp--preset--color--ink);
+	border-radius: 0;
+	padding: 0.9rem 1.6rem;
+	cursor: pointer;
+}
+
+.northline-form button:hover,
+.northline-form input[type="submit"]:hover {
+	background: #2f5245;
+}
+
+.northline-form .error,
+.northline-form [role="alert"] {
+	color: #8a2a1e;
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.northline-form .success,
+.northline-form [role="status"] {
+	background: var(--wp--preset--color--moss);
+	padding: 0.9rem 1rem;
+}
+
+/* ---------- Editor parity ---------- */
+
+.editor-styles-wrapper .northline-kicker {
+	text-transform: uppercase;
+}

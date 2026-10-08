@@ -45,7 +45,8 @@
     "tasks": [
       "theme-single",
       "theme-pattern",
-      "theme-palette"
+      "theme-palette",
+      "agency-landing-page"
     ]
   },
   "wp-plugin-development": {
@@ -215,7 +216,8 @@
       "theme-pattern",
       "theme-palette",
       "accessibility-image",
-      "accessibility-form"
+      "accessibility-form",
+      "agency-landing-page"
     ]
   },
   "best-practices": {

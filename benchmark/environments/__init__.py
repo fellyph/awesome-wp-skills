@@ -13,13 +13,19 @@ def evaluate(task, candidate, output, timeout=180):
     output.mkdir(parents=True, exist_ok=True)
     request = output / 'request.json'
     result = output / 'evidence.json'
-    atomic_json(request, {'task': task, 'files': candidate})
+    project = task.get('profile') == 'wordpress-project-v2'
+    payload = {'task': task, 'files': candidate}
+    if project:
+        from benchmark.project import package
+        payload['bundle'] = str(package(task, candidate, output).resolve())
+        timeout = max(timeout, 300)
+    atomic_json(request, payload)
     env = {k: os.environ[k] for k in ('PATH', 'SYSTEMROOT', 'PLAYWRIGHT_BROWSERS_PATH', 'NODE_EXTRA_CA_CERTS') if k in os.environ}
     # Keep Playground caches inside its own temporary root; no host workspace is mounted.
     with tempfile.TemporaryDirectory(prefix='wp-bench-') as temp:
         env['TMPDIR'] = temp
         with (output / 'playground.log').open('w') as log:
-            proc = subprocess.Popen(['node', str(ROOT / 'environments/playground.mjs'), str(request.resolve()), str(result.resolve())],
+            proc = subprocess.Popen(['node', str(ROOT / ('environments/project-evaluate.mjs' if project else 'environments/playground.mjs')), str(request.resolve()), str(result.resolve())],
                                     cwd=temp, env=env, stdout=log, stderr=log, start_new_session=True)
             try:
                 proc.wait(timeout=timeout)

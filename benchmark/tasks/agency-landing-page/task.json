@@ -1,0 +1,95 @@
+{
+  "id": "agency-landing-page",
+  "version": "1.0.0",
+  "category": "themes",
+  "kind": "theme",
+  "profile": "wordpress-project-v2",
+  "scoring_version": "landing-page-v1",
+  "browser": "landing-page",
+  "checks": [
+    {
+      "id": "activation",
+      "weight": 5,
+      "critical": true,
+      "dimension": "WordPress integration and editability"
+    },
+    {
+      "id": "blocks",
+      "weight": 10,
+      "critical": true,
+      "dimension": "WordPress integration and editability"
+    },
+    {
+      "id": "editable",
+      "weight": 15,
+      "critical": true,
+      "dimension": "WordPress integration and editability"
+    },
+    {
+      "id": "sections",
+      "weight": 10,
+      "critical": true,
+      "dimension": "Requirements and functionality"
+    },
+    {
+      "id": "cta",
+      "weight": 5,
+      "critical": true,
+      "dimension": "Requirements and functionality"
+    },
+    {
+      "id": "form",
+      "weight": 10,
+      "critical": true,
+      "dimension": "Requirements and functionality"
+    },
+    {
+      "id": "axe",
+      "weight": 10,
+      "critical": false,
+      "dimension": "Accessibility"
+    },
+    {
+      "id": "keyboard",
+      "weight": 10,
+      "critical": true,
+      "dimension": "Accessibility"
+    },
+    {
+      "id": "responsive",
+      "weight": 8,
+      "critical": true,
+      "dimension": "Responsive behavior"
+    },
+    {
+      "id": "mobile_navigation",
+      "weight": 7,
+      "critical": true,
+      "dimension": "Responsive behavior"
+    },
+    {
+      "id": "errors",
+      "weight": 3,
+      "critical": false,
+      "dimension": "Technical quality"
+    },
+    {
+      "id": "assets",
+      "weight": 3,
+      "critical": true,
+      "dimension": "Technical quality"
+    },
+    {
+      "id": "resources",
+      "weight": 2,
+      "critical": false,
+      "dimension": "Technical quality"
+    },
+    {
+      "id": "security",
+      "weight": 2,
+      "critical": true,
+      "dimension": "Technical quality"
+    }
+  ]
+}

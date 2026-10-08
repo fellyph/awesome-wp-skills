@@ -50,6 +50,17 @@ def load_tasks():
         task = read_json(path)
         if task["id"] != path.parent.name or task["category"] not in CATEGORIES:
             raise ValueError(f"Invalid task: {path}")
+        task.setdefault("profile", "files-only-v1")
+        task.setdefault("scoring_version", "micro-v1")
+        task.setdefault("version", "1.0.0")
+        if task["profile"] == "wordpress-project-v2":
+            materials = read_json(path.parent / 'materials.json')
+            for name, expected_hash in materials['sha256'].items():
+                if hashlib.sha256((path.parent / name).read_bytes()).hexdigest() != expected_hash:
+                    raise ValueError('Frozen scenario material changed: ' + name)
+            task['materials_hash'] = digest(materials)
+            task["public_hashes"] = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((path.parent / "public").glob("*")) if p.is_file()}
+            task["fixtures_hash"] = digest(files(path.parent / "fixtures"))
         task["prompt"] = (path.parent / "prompt.txt").read_text()
         task["initial"] = files(path.parent / "initial")
         task["reference"] = files(path.parent / "reference")
@@ -129,6 +140,11 @@ def load_round(path):
                     raise ValueError('GPT-6 Astra does not support temperature or top_p')
                 if model['parameters'].get('reasoning_effort', 'medium') not in ('low', 'medium', 'high', 'xhigh', 'max'):
                     raise ValueError('Unsupported GPT-6 Astra reasoning effort')
+    profiles = {tasks[t]["profile"] for t in config["tasks"]}
+    if len(profiles) != 1:
+        raise ValueError("Execution profiles must be run and scored in separate rounds")
+    if "wordpress-project-v2" in profiles and any(m["adapter"] not in ("gemini", "openai", "anthropic", "mock") for m in models):
+        raise ValueError("wordpress-project-v2 requires a supported multimodal adapter (Gemini, OpenAI or Anthropic)")
     locks = read_json(ROOT / "skills.lock.json")
     skills = {}
     for skill_id in config["skills"]:

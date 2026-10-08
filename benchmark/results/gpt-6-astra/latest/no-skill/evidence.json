@@ -1,0 +1,135 @@
+{
+  "checks": {
+    "activation": true,
+    "blocks": true,
+    "editable": true,
+    "sections": true,
+    "cta": true,
+    "form": true,
+    "axe": true,
+    "keyboard": true,
+    "responsive": true,
+    "mobile_navigation": true,
+    "errors": true,
+    "assets": true,
+    "resources": true,
+    "security": true
+  },
+  "measurements": {
+    "development": {
+      "activation": {
+        "active": true,
+        "block_theme": true
+      },
+      "blocks": {
+        "count": 53,
+        "invalid": [],
+        "names": [
+          "core/group",
+          "core/group",
+          "core/paragraph",
+          "core/heading",
+          "core/paragraph",
+          "core/buttons",
+          "core/button",
+          "core/image",
+          "core/group",
+          "core/paragraph",
+          "core/heading",
+          "core/group",
+          "core/group",
+          "core/heading",
+          "core/paragraph",
+          "core/group",
+          "core/heading",
+          "core/paragraph",
+          "core/group",
+          "core/heading",
+          "core/paragraph",
+          "core/group",
+          "core/paragraph",
+          "core/heading",
+          "core/group",
+          "core/group",
+          "core/image",
+          "core/heading",
+          "core/paragraph",
+          "core/group",
+          "core/image",
+          "core/heading",
+          "core/paragraph",
+          "core/group",
+          "core/paragraph",
+          "core/heading",
+          "core/quote",
+          "core/paragraph",
+          "core/group",
+          "core/paragraph",
+          "core/heading",
+          "core/group",
+          "core/details",
+          "core/paragraph",
+          "core/details",
+          "core/paragraph",
+          "core/details",
+          "core/paragraph",
+          "core/group",
+          "core/paragraph",
+          "core/heading",
+          "core/paragraph",
+          "core/shortcode"
+        ]
+      },
+      "php_errors": "",
+      "axe": []
+    },
+    "submission_fixture": "a8617132",
+    "axe_violations": [],
+    "keyboard_journey": [
+      {
+        "name": "Skip to content",
+        "tag": "A",
+        "focus": true
+      },
+      {
+        "name": "NORTHLINE /",
+        "tag": "A",
+        "focus": true
+      },
+      {
+        "name": "Services",
+        "tag": "A",
+        "focus": true
+      },
+      {
+        "name": "Work",
+        "tag": "A",
+        "focus": true
+      },
+      {
+        "name": "Studio",
+        "tag": "A",
+        "focus": true
+      },
+      {
+        "name": "Contact",
+        "tag": "A",
+        "focus": true
+      },
+      {
+        "name": "Start a project",
+        "tag": "A",
+        "focus": true
+      }
+    ],
+    "frontend_requests": 8,
+    "theme_bytes": 20231,
+    "editor_fixture": {
+      "title": "A better home for ideas 92dab81e",
+      "label": "Discuss your next project 92dab81e",
+      "image": "replacement.svg"
+    },
+    "browser_errors": []
+  },
+  "evidence": {}
+}
