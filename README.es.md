@@ -123,7 +123,7 @@ Estas herramientas proporcionan acceso a funciones externas. Algunas se ejecutan
 
 ## Combinaciones sugeridas
 
-Son puntos de partida, no paquetes probados. Selecciona las herramientas según el trabajo que vayas a realizar.
+Son puntos de partida, no paquetes probados. Selecciona las herramientas según el trabajo que vayas a realizar. Para ver un recorrido paso a paso desde la referencia visual hasta un tema de WordPress validado —incluyendo skills, límites de MCP, entrega al editor y control de calidad—, consulta la [guía de flujo de diseño para WordPress](DESIGN-WORKFLOW.md).
 
 | Objetivo | Prueba esta combinación |
 | --- | --- |

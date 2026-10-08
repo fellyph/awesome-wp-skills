@@ -123,7 +123,7 @@ Os itens abaixo dão acesso a ferramentas. Alguns são executados localmente, ou
 
 ## Combinações sugeridas
 
-Estas combinações são pontos de partida, não pacotes testados. Selecione as ferramentas conforme o trabalho.
+Estas combinações são pontos de partida, não pacotes testados. Selecione as ferramentas conforme o trabalho. Para conferir um passo a passo da referência visual até um tema WordPress validado — cobrindo skills, limites de MCP, entrega para edição e controle de qualidade —, consulte o [guia de fluxo de design para WordPress](DESIGN-WORKFLOW.md).
 
 | Objetivo | Experimente combinar |
 | --- | --- |
