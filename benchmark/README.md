@@ -70,18 +70,18 @@ Allowed generation parameters are explicit per adapter. Unsupported options fail
 
 Direct-provider costs are **estimates from recorded usage and configured prices**; OpenRouter costs use its reported `usage.cost`. Cached input is treated as a subset and reasoning output is not counted twice. Cache-specific rates can be configured; omitted cache-write rates use a conservative fallback. Use upper-tier rates for models with tiered long-context pricing. The runner reserves a conservative request estimate before sending a call and stops if usage becomes uncertain. Incorrect price inputs, provider surcharges, or an in-flight request can make actual billing differ from the local estimate; configure a provider-side spending cap where available if an exact billing ceiling is required.
 
-### First GPT-6 Astra run
+### First diagnostic live runs
 
-[gpt-6-astra-first.json](configs/gpt-6-astra-first.json) compares the search form task without a skill, with `accessibility`, and with `frontend-design`, applied individually. It uses one repetition per condition, medium reasoning, and Standard Responses pricing reviewed on September 7, 2026. Three executions are capped at USD 6 each, USD 18 for the round, within the USD 20 model allowance. The 64,000 cumulative token limit keeps requests below Astra's 272K long-context pricing threshold.
+[gpt-6-astra-first.json](configs/gpt-6-astra-first.json) and [gemini-3.8-flash-first.json](configs/gemini-3.8-flash-first.json) compare the search form task (`accessibility/accessibility-form`) without a skill, with `accessibility`, and with `frontend-design`, applied individually. Each uses one repetition per condition, medium reasoning/thinking, and provider pricing reviewed on September 7, 2026. Three executions are capped at USD 6 each, USD 18 for the round, within the USD 20 model allowance. The 64,000 cumulative token limit keeps requests below Astra's 272K long-context pricing threshold.
 
-With `OPENAI_API_KEY` available to the process and access to `gpt-6-astra`:
+With `OPENAI_API_KEY` (for `gpt-6-astra`) or `GEMINI_API_KEY` (for `gemini-3.8-flash`) available to the process:
 
 ```sh
 python3 -m benchmark validate --config benchmark/configs/gpt-6-astra-first.json
 python3 -m benchmark run --config benchmark/configs/gpt-6-astra-first.json --output results/gpt-6-astra-first --live
 ```
 
-The runner reads credentials from environment variables; it does not automatically load `.env` files. The report records scores, tokens, estimated costs and timings. Each browser evaluation saves `screenshot-desktop.png` (1000px before interaction), `screenshot.png` (after keyboard checks), and `screenshot-mobile.png` (390px after interaction). These screenshots document the submitted component in a neutral test page. A single repetition is an exploratory sample, not evidence for a statistical ranking. Fixture/reference screenshots are validation artifacts, not model results.
+The runner reads credentials from environment variables; it does not automatically load `.env` files. The report records scores, tokens, estimated costs and timings. Each browser evaluation saves `screenshot-desktop.png` (1000px before interaction), `screenshot.png` (after keyboard checks), and `screenshot-mobile.png` (390px after interaction). These screenshots document the submitted component in a neutral test page. A single repetition is an exploratory sample, not evidence for a statistical ranking. Fixture/reference screenshots are validation artifacts, not model results. Published side-by-side category and model comparisons are tracked in [results/README.md](results/README.md).
 
 ## Tasks and scoring
 

@@ -63,3 +63,44 @@ class PublishResultsTests(unittest.TestCase):
             self.assertIn("$2.787952", readme)
             self.assertNotIn("2.7879519999999993", readme)
             self.assertIn("no-skill/navigation-audit-v2.json", readme)
+
+    def test_exports_files_only_diagnostic_round(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            run = root / "raw" / "runs" / "0000-test"
+            (run / "project").mkdir(parents=True)
+            (run / "evaluation").mkdir()
+            (run / "project" / "fixture.php").write_text("<?php\n")
+            (run / "evaluation" / "evidence.json").write_text('{"checks":{"renders":true}}')
+            (run / "evaluation" / "screenshot.png").write_bytes(b"png")
+            result = {
+                "model": "gemini-3.8-flash",
+                "skill": "frontend-design",
+                "task": "accessibility-form",
+                "category": "accessibility",
+                "environment": {"tool_profile": "files-only-v1"},
+                "generation_status": "budget_exceeded",
+                "status": "budget_exceeded",
+                "success": False,
+                "score": 100.0,
+                "known_cost_usd": 0.12794025,
+                "cost_complete": True,
+                "tokens": 66067,
+                "calls": 5,
+                "evaluation": {"score": 100.0, "success": True, "checks": {"renders": True}},
+            }
+            (run / "result.json").write_text(json.dumps(result))
+            (run / "agent.json").write_text(json.dumps({}))
+            target = publish_round(root / "raw", root / "published")
+            exported = json.loads((target / "frontend-design" / "result.json").read_text())
+            self.assertEqual(exported["profile"], "files-only-v1")
+            self.assertEqual(exported["scoring_version"], "micro-v1")
+            self.assertTrue(exported["artifact_pass"])
+            self.assertFalse(exported["execution_completion"])
+            self.assertFalse(exported["delivery_success"])
+            self.assertEqual(exported["known_cost_usd"], 0.12794)
+            self.assertTrue((target / "frontend-design" / "screenshot.png").exists())
+            readme = (target / "README.md").read_text()
+            self.assertIn("frontend-design/evidence.json", readme)
+            self.assertIn("frontend-design/screenshot.png", readme)
+            self.assertNotIn("theme.zip", readme)

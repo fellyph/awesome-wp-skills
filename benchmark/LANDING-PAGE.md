@@ -191,7 +191,9 @@ Both adapters send reference images and preview screenshots as native image
 content, replay native reasoning unchanged, and count the actual input using
 `/responses/input_tokens` or `/messages/count_tokens` before each generation.
 Astra long-context pricing applies above 272,000 input tokens. Unsupported
-adapters still fail before generation. These pilots remain exploratory.
+adapters still fail before generation. These pilots remain exploratory; see
+[results/README.md](results/README.md) for the published category and model
+comparison tables.
 
 For Anthropic keys that span workspaces, set `ANTHROPIC_WORKSPACE_ID` alongside
 `ANTHROPIC_API_KEY` in the process environment. The adapter sends it only as the

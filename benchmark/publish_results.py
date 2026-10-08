@@ -11,9 +11,9 @@ from pathlib import Path
 
 
 PUBLIC_EVALUATION_FILES = (
-    "screenshot-desktop.png", "screenshot-mobile.png", "editor-saved.png",
-    "editor-reloaded.png", "handover-published.png", "form-submitted.png",
-    "theme.zip", "playground-bundle.zip", "evidence.json",
+    "screenshot-desktop.png", "screenshot-mobile.png", "screenshot.png",
+    "editor-saved.png", "editor-reloaded.png", "handover-published.png",
+    "form-submitted.png", "theme.zip", "playground-bundle.zip", "evidence.json",
 )
 PUBLIC_RUN_FILES = ("navigation-audit-v2.json",)
 RESULT_FIELDS = (
@@ -31,6 +31,16 @@ def read_json(path):
 
 def safe_result(result, agent):
     exported = {key: result.get(key) for key in RESULT_FIELDS}
+    if exported["profile"] is None:
+        exported["profile"] = result.get("environment", {}).get("tool_profile")
+    if exported["scoring_version"] is None and exported["profile"] == "files-only-v1":
+        exported["scoring_version"] = "micro-v1"
+    if exported["artifact_pass"] is None and "success" in result.get("evaluation", {}):
+        exported["artifact_pass"] = bool(result["evaluation"]["success"])
+    if exported["execution_completion"] is None and result.get("generation_status") is not None:
+        exported["execution_completion"] = result.get("generation_status") == "completed"
+    if exported["delivery_success"] is None and "success" in result:
+        exported["delivery_success"] = bool(result["success"])
     if isinstance(exported.get("known_cost_usd"), float):
         exported["known_cost_usd"] = round(exported["known_cost_usd"], 6)
     exported["checks"] = result.get("evaluation", {}).get("checks", {})
@@ -91,8 +101,14 @@ def publish_round(source, destination):
     for condition, result in copied:
         lines.extend([f"## {condition}", "", f"- Status: `{result['status']}`", f"- Automated score: `{result['score'] if result['generated_artifact'] else 'N/A — no model generation'}`", f"- Artifact pass: `{result['artifact_pass'] if result['generated_artifact'] else 'N/A — no model generation'}`", f"- Execution completion: `{result['execution_completion']}`", f"- Delivery success: `{result['delivery_success']}`", f"- Known cost: `${result['known_cost_usd']}`", f"- Tokens / calls: `{result['tokens']}` / `{result['calls']}`"])
         if result["generated_artifact"]:
-            lines.extend([f"- [Source]({condition}/source/) · [theme ZIP]({condition}/theme.zip) · [Playground bundle]({condition}/playground-bundle.zip)",
-                          f"- [Desktop screenshot]({condition}/screenshot-desktop.png) · [Mobile screenshot]({condition}/screenshot-mobile.png)"])
+            if result.get("profile") == "files-only-v1":
+                lines.extend([
+                    f"- [Source]({condition}/source/) · [Criterion evidence]({condition}/evidence.json)",
+                    f"- [Desktop screenshot]({condition}/screenshot-desktop.png) · [Interaction screenshot]({condition}/screenshot.png) · [Mobile screenshot]({condition}/screenshot-mobile.png)",
+                ])
+            else:
+                lines.extend([f"- [Source]({condition}/source/) · [theme ZIP]({condition}/theme.zip) · [Playground bundle]({condition}/playground-bundle.zip)",
+                              f"- [Desktop screenshot]({condition}/screenshot-desktop.png) · [Mobile screenshot]({condition}/screenshot-mobile.png)"])
             if (target / condition / "navigation-audit-v2.json").exists():
                 lines.append(f"- [Post-run navigation audit]({condition}/navigation-audit-v2.json)")
         else:

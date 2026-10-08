@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.8-flash",
+  "skill": "frontend-design",
+  "task": "accessibility-form",
+  "category": "accessibility",
+  "profile": "files-only-v1",
+  "scoring_version": "micro-v1",
+  "artifact_pass": true,
+  "execution_completion": false,
+  "delivery_success": false,
+  "status": "budget_exceeded",
+  "score": 100.0,
+  "known_cost_usd": 0.12794,
+  "cost_complete": true,
+  "tokens": 66067,
+  "calls": 5,
+  "generation_seconds": 96.73675495799398,
+  "evaluation_seconds": 7.445277750026435,
+  "development_iterations": null,
+  "generation_status": "budget_exceeded",
+  "cost_basis": [
+    "estimated_from_configured_rates"
+  ],
+  "visual_review": null,
+  "task_version": null,
+  "checks": {
+    "renders": true,
+    "axe": true,
+    "keyboard": true,
+    "semantics": true
+  },
+  "generated_artifact": true
+}

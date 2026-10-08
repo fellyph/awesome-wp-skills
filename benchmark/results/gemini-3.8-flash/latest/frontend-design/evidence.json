@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "renders": true,
+    "axe": true,
+    "keyboard": true,
+    "semantics": true
+  },
+  "measurements": {
+    "axe_violations": []
+  },
+  "error": null
+}
