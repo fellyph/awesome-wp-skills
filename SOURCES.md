@@ -58,3 +58,17 @@ The Brazilian Portuguese review consulted the [WordPress glossary](https://trans
 The [benchmark framework](benchmark/README.md) evaluates 15 focused diagnostic WordPress tasks (`files-only-v1`) alongside the practical [editable agency landing-page scenario](benchmark/LANDING-PAGE.md) (`wordpress-project-v2` / `agency-landing-page` v1.0.0) with individually applied skills. Upstream skill commits and file hashes are recorded in its lockfile; downloaded resources stay in an ignored cache. This does not change the catalog's documentation-only verification status.
 
 Native adapters cover OpenAI, Anthropic, Gemini, Kimi and GLM, with optional OpenRouter routing. API sources and runtime limitations are documented in the benchmark guides. Provider formats and cost calculations are tested in CI using simulated responses; Playground fixture and assertion-audit checks verify reference and deliberately broken solutions. Tracked [model snapshots](benchmark/results/) publish sanitized single-repetition exploratory runs (`gpt-6-astra` and `claude-fable-5-1`) with public criterion evidence and pending human visual reviews; they do not establish general model or skill rankings.
+
+## Design-to-WordPress workflow guide (October 8, 2026)
+
+The [design-to-WordPress workflow guide](DESIGN-WORKFLOW.md), added for [issue #5](https://github.com/fellyph/awesome-wp-skills/issues/5), documents the path from visual reference to a validated WordPress block theme. It separates participant reports shared on the maintainer's discussion post (combining Canva, Google Stitch, and Google Antigravity via MCP; hybrid theme layout review; and quality-control workflows) from the repository's tested WordPress Playground workflow.
+
+Additional primary documentation and MCP tool schemas checked for the case study:
+
+| Source | Important distinction |
+| --- | --- |
+| [Google Antigravity documentation](https://antigravity.google/docs) and [MCP guide](https://antigravity.google/docs/mcp) | AI-first IDE and agent client that loads local `SKILL.md` files and connects to MCP servers; distinct from the external design or WordPress servers it orchestrates. |
+| [Google Stitch](https://stitch.withgoogle.com/) | Experimental Google Labs UI design generator. Its MCP server exposes project, `DESIGN.md`, and screen generation tools (`create_project`, `upload_design_md`, `create_design_system_from_design_md`, `generate_screen_from_text`, `get_screen`). Screen generation can take several minutes and outputs UI prototypes rather than WordPress block themes. |
+| [Canva Developers](https://www.canva.dev/) | Documents two separate MCP servers: the assistant-facing Canva MCP server (`https://mcp.canva.com/mcp`) for user designs and brand kits, and the Canva Dev MCP server for building Canva apps. Neither exports WordPress block markup directly. |
+
+The reproducible walkthrough uses the repository's local Northline fixture (`benchmark/tasks/agency-landing-page/`), Playwright/Axe checks, Gutenberg editor-handover verification, and recorded token/cost telemetry from `benchmark/results/`. Conversion-optimization suggestions from design skills or screenshot reviews are documented strictly as hypotheses requiring live-traffic validation, not measured conversion gains.

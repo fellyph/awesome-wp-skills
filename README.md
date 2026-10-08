@@ -123,7 +123,7 @@ These entries provide tool access. Some run locally, some are WordPress plugins,
 
 ## Suggested combinations
 
-These are starting points, not tested bundles. Select tools for the work at hand.
+These are starting points, not tested bundles. Select tools for the work at hand. For a step-by-step walkthrough from visual reference to a validated WordPress theme—covering skills, MCP boundaries, editor handover, and quality control—see the [design-to-WordPress workflow guide](DESIGN-WORKFLOW.md).
 
 | Goal | Try together |
 | --- | --- |
