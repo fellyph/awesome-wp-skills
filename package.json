@@ -16,7 +16,7 @@
     "lint:md": "npx markdownlint-cli2@0.23.2 '**/*.md' '.github/**/*.md'"
   },
   "devDependencies": {
-    "@axe-core/playwright": "4.13.0",
+    "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.63.0",
     "@wp-playground/cli": "3.1.56"
   },
